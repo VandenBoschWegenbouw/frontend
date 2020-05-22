@@ -1,27 +1,33 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import QtQuick.Dialogs 1.2
+import QtQuick.Window 2.3
 
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Stack")
+    width: Screen.width
+    height: Screen.height
+    property alias stackView: svItems
+    property alias window: window
+    property alias toolBar: toolBar
+    title: qsTr("vdbosch Registratie")
+
+
+    Component.onCompleted: {
+        console.log("density: " + Screen.pixelDensity)
+    }
 
     header: ToolBar {
+        id: toolBar
         contentHeight: toolButton.implicitHeight
+        visible: false
 
         ToolButton {
             id: toolButton
-            text: stackView.depth > 1 ? "\u25C0" : "\u2630"
+            text: "\u2630"
             font.pixelSize: Qt.application.font.pixelSize * 1.6
-            onClicked: {
-                if (stackView.depth > 1) {
-                    stackView.pop()
-                } else {
-                    drawer.open()
-                }
-            }
+            onClicked: drawer.open()
         }
 
         Label {
@@ -42,7 +48,7 @@ ApplicationWindow {
                 text: qsTr("Page 1")
                 width: parent.width
                 onClicked: {
-                    stackView.push("Page1Form.ui.qml")
+                    stackView.replace("Page1Form.ui.qml")
                     drawer.close()
                 }
             }
@@ -50,7 +56,7 @@ ApplicationWindow {
                 text: qsTr("Page 2")
                 width: parent.width
                 onClicked: {
-                    stackView.push("Page2Form.ui.qml")
+                    stackView.replace("Page2Form.ui.qml")
                     drawer.close()
                 }
             }
@@ -58,8 +64,27 @@ ApplicationWindow {
     }
 
     StackView {
-        id: stackView
-        initialItem: "HomeForm.ui.qml"
+        id: svItems
         anchors.fill: parent
+        anchors.bottom: parent.bottom
+        initialItem: "Login.qml"
+    }
+
+    Connections {
+        target: loginHandler
+        onCorrectLogin: {
+            svItems.replace("Page1Form.ui.qml")
+            toolBar.visible = true;
+        }
+
+        onIncorrectLogin: {
+            incorrectLogin.visible = true
+        }
+    }
+
+    MessageDialog {
+        id: incorrectLogin
+        title: "Incorrect login attempt"
+        text: "The provided information was incorrect, please try again"
     }
 }

@@ -14,7 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        logincomponent.cpp \
+        loginhandler.cpp \
+        main.cpp \
+        servercommunicator.cpp
 
 RESOURCES += qml.qrc
 
@@ -28,3 +31,20 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml \
+    images/Logo.png
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+HEADERS += \
+    logincomponent.h \
+    loginhandler.h \
+    servercommunicator.h
