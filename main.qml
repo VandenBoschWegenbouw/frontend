@@ -15,11 +15,6 @@ ApplicationWindow {
     property alias toolBar: toolBar
     title: qsTr("vdbosch Registratie")
 
-
-    Component.onCompleted: {
-        console.log(Screen.width + " + " + screen.height)
-    }
-
     header: ToolBar {
         id: toolBar
         contentHeight: toolButton.implicitHeight

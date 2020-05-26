@@ -24,6 +24,9 @@ signals:
 private slots:
     void _finished(QNetworkReply *);
 
+private:
+    QNetworkAccessManager manager;
+
 };
 
 #endif // LOGINCOMPONENT_H

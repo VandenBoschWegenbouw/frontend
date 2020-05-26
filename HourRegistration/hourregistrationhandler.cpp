@@ -7,15 +7,6 @@ HourRegistrationHandler::HourRegistrationHandler(QObject *parent) : QObject(pare
 
 }
 
-
 void HourRegistrationHandler::fetchHours() {
-
-}
-
-void HourRegistrationHandler::fetchProjects() {
-    qDebug() << LoginComponent::user.id;
-}
-
-void HourRegistrationHandler::fetchCustomer() {
 
 }

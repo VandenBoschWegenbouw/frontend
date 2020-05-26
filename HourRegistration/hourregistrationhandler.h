@@ -2,6 +2,8 @@
 #define HOURREGISTRATIONHANDLER_H
 
 #include <QObject>
+#include <Company/companylist.h>
+
 
 class HourRegistrationHandler : public QObject
 {
@@ -13,12 +15,13 @@ public slots:
     //To give the overview of all hour registrations
     void fetchHours();
 
-    //To add new hour registrations
-    void fetchProjects();
-    void fetchCustomer();
+
 
 signals:
 
+
+private:
+    CompanyList *mList;
 };
 
 #endif // HOURREGISTRATIONHANDLER_H

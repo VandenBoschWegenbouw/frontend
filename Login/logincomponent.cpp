@@ -10,7 +10,6 @@
 #include <Structs/UserStruct.h>
 
 
-QNetworkAccessManager manager;
 UserStruct LoginComponent::user;
 
 LoginComponent::LoginComponent(QObject *parent) : QObject(parent)
@@ -28,7 +27,6 @@ void LoginComponent::login(LoginStruct user)
 
     QJsonDocument doc(obj);
 
-    qDebug() << doc.toJson().toHex();
 
     QNetworkRequest request(QUrl("http://localhost:9000/users/login"));
     request.setRawHeader("Content-Type", "application/json");
@@ -40,7 +38,6 @@ void LoginComponent::_finished(QNetworkReply *reply)
 {
     QByteArray arr = reply->readAll();
 
-    qDebug() << arr;
 
     if (arr.size() > 0) {
 

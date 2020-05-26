@@ -14,12 +14,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        Company/companycomponent.cpp \
+        Company/companyhandler.cpp \
+        Company/companylist.cpp \
+        Company/companymodel.cpp \
         Login/logincomponent.cpp \
         Login/loginhandler.cpp \
         HourRegistration/hourregistrationcomponent.cpp \
         HourRegistration/hourregistrationhandler.cpp \
         HourRegistration/hourregistrationlist.cpp \
         HourRegistration/hourregistrationmodel.cpp \
+        Projects/projectcomponent.cpp \
+        Projects/projecthandler.cpp \
+        Projects/projectlist.cpp \
+        Projects/projectmodel.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -48,12 +56,20 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
+    Company/companycomponent.h \
+    Company/companyhandler.h \
+    Company/companylist.h \
+    Company/companymodel.h \
     Login/logincomponent.h \
     Login/loginhandler.h \
     HourRegistration/hourregistrationcomponent.h \
     HourRegistration/hourregistrationhandler.h \
     HourRegistration/hourregistrationlist.h \
     HourRegistration/hourregistrationmodel.h \
+    Projects/projectcomponent.h \
+    Projects/projecthandler.h \
+    Projects/projectlist.h \
+    Projects/projectmodel.h \
     Structs/CompanyStruct.h \
     Structs/HourRegistrationStruct.h \
     Structs/LoginStruct.h \

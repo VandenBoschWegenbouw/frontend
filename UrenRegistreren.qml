@@ -2,6 +2,8 @@ import QtQuick 2.4
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.14
 
+import vdBosch 1.0
+
 Page {
     id: page
     width: window.width
@@ -62,6 +64,24 @@ Page {
                 id: cbSelectKlant
                 implicitWidth: parent.width*0.6
                 implicitHeight: parent.height*0.05
+                textRole: "name"
+                model: CompanyModel {
+                    list: companyList
+                }
+
+                Component.onCompleted: {
+
+                    companyHandler.fetchCompanies(companyList)
+                }
+
+                onDisplayTextChanged: {
+
+                    projectHandler.fetchProjects(companyList, projectList, currentIndex);
+
+                    cbSelectProject.enabled = true;
+
+                }
+
 
                 background: Rectangle {
                     color: "white"
@@ -70,14 +90,8 @@ Page {
                     width: parent.width
                     height: parent.height
                 }
-                model: ListModel {
-                    ListElement {
-                        text: "Test"
-                    }
-                    ListElement {
-                        text: "Test 2"
-                    }
-                }
+
+
             }
 
             Label {
@@ -94,8 +108,15 @@ Page {
                 Layout.columnSpan: 3
                 Layout.row: 6
                 id: cbSelectProject
+                enabled: false
                 implicitWidth: parent.width*0.6
                 implicitHeight: parent.height*0.05
+
+
+                textRole: "name"
+                model: ProjectModel {
+                    list: projectList
+                }
 
                 background: Rectangle {
                     color: "white"
@@ -103,19 +124,6 @@ Page {
                     border.width: 3
                     width: parent.width
                     height: parent.height
-                }
-
-                model: ListModel {
-                    ListElement {
-                        text: "Test project"
-                    }
-                    ListElement {
-                        text: "Test project 2"
-                    }
-                }
-
-                Component.onCompleted: {
-                    hourRegistrationHandler.fetchProjects()
                 }
             }
 

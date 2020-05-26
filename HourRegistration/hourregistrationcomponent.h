@@ -9,6 +9,8 @@ class HourRegistrationComponent : public QObject
 public:
     explicit HourRegistrationComponent(QObject *parent = nullptr);
 
+    void fetchCustomers();
+
 signals:
 
 };
