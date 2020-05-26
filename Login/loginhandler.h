@@ -2,7 +2,7 @@
 #define LOGINHANDLER_H
 
 #include <QObject>
-#include <logincomponent.h>
+#include <Login/logincomponent.h>
 
 class LoginHandler : public QObject
 {
@@ -24,7 +24,6 @@ public slots:
     void login();
     void correctLoginReceived();
     void incorrectLoginReceived();
-
 
 signals:
     void usernameChanged(const QString& username);

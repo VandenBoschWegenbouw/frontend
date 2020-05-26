@@ -14,10 +14,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        logincomponent.cpp \
-        loginhandler.cpp \
-        main.cpp \
-        servercommunicator.cpp
+        Login/logincomponent.cpp \
+        Login/loginhandler.cpp \
+        HourRegistration/hourregistrationcomponent.cpp \
+        HourRegistration/hourregistrationhandler.cpp \
+        HourRegistration/hourregistrationlist.cpp \
+        HourRegistration/hourregistrationmodel.cpp \
+        main.cpp
 
 RESOURCES += qml.qrc
 
@@ -45,6 +48,14 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
-    logincomponent.h \
-    loginhandler.h \
-    servercommunicator.h
+    Login/logincomponent.h \
+    Login/loginhandler.h \
+    HourRegistration/hourregistrationcomponent.h \
+    HourRegistration/hourregistrationhandler.h \
+    HourRegistration/hourregistrationlist.h \
+    HourRegistration/hourregistrationmodel.h \
+    Structs/CompanyStruct.h \
+    Structs/HourRegistrationStruct.h \
+    Structs/LoginStruct.h \
+    Structs/ProjectStruct.h \
+    Structs/UserStruct.h

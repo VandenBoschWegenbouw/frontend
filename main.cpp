@@ -3,7 +3,8 @@
 #include <QQmlContext>
 #include <QSettings>
 
-#include "loginhandler.h"
+#include "Login/loginhandler.h"
+#include "HourRegistration/hourregistrationhandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,11 +13,13 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     LoginHandler lHandler;
+    HourRegistrationHandler hHandler;
 
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("applicationPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("loginHandler", &lHandler);
+    engine.rootContext()->setContextProperty("hourRegistrationHandler", &hHandler);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

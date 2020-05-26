@@ -6,14 +6,17 @@
 #include <QSettings>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <loginhandler.h>
+#include <Login/loginhandler.h>
+#include <Structs/UserStruct.h>
 
 
 QNetworkAccessManager manager;
+UserStruct LoginComponent::user;
 
 LoginComponent::LoginComponent(QObject *parent) : QObject(parent)
 {
     connect(&manager, &QNetworkAccessManager::finished, this, &LoginComponent::_finished);
+
 }
 
 void LoginComponent::login(LoginStruct user)
@@ -37,5 +40,19 @@ void LoginComponent::_finished(QNetworkReply *reply)
 {
     QByteArray arr = reply->readAll();
 
-    arr.size() > 0 ? emit correctLogin() : emit incorrectLogin();
+    qDebug() << arr;
+
+    if (arr.size() > 0) {
+
+        QJsonDocument doc = QJsonDocument::fromJson(arr);
+        QJsonObject obj = doc.object();
+
+        user = {obj["idUser"].toInt(), obj["username"].toString(), obj["password"].toString(), obj["isAdmin"].toBool()};
+
+        emit correctLogin();
+    } else {
+        emit correctLogin();
+        //emit incorrectLogin();
+    }
+
 }

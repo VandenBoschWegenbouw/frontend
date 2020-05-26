@@ -25,8 +25,8 @@ Page {
         Image {
             id: logo
             y: parent.height*0.2
-            width: (parent.width*0.5)
-            height: (parent.width*0.5)/100*115
+            width: (parent.width*0.4)
+            height: (parent.width*0.4)/100*115
             anchors.horizontalCenter: parent.horizontalCenter
             source: "images/Logo.png"
         }
@@ -71,7 +71,7 @@ Page {
             Label {
                 color: "#ffffff"
                 text: qsTr("INLOGGEN")
-                font.pointSize: 24
+                font.pointSize: 18
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter
@@ -88,9 +88,3 @@ Page {
         }
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:1.75}D{i:1;anchors_height:200;anchors_width:200;anchors_x:63;anchors_y:86}
-}
-##^##*/

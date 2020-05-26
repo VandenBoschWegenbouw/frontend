@@ -2,12 +2,10 @@
 #define LOGINCOMPONENT_H
 
 #include <QString>
-#include <servercommunicator.h>
-
-struct LoginStruct {
-    QString username;
-    QString password;
-};
+#include <QObject>
+#include <QNetworkReply>
+#include <Structs/LoginStruct.h>
+#include <Structs/UserStruct.h>
 
 class LoginComponent: public QObject
 {
@@ -17,15 +15,15 @@ public:
 
     void login(LoginStruct user);
 
+    static UserStruct user;
+
 signals:
     void correctLogin();
     void incorrectLogin();
 
-private:
-    ServerCommunicator communicator;
-
 private slots:
     void _finished(QNetworkReply *);
+
 };
 
 #endif // LOGINCOMPONENT_H

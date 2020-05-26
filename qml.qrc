@@ -1,10 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Page1Form.ui.qml</file>
-        <file>Page2Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>Login.qml</file>
         <file>images/Logo.png</file>
+        <file>MijnUren.qml</file>
+        <file>GebruikteMaterialen.qml</file>
+        <file>UrenRegistreren.qml</file>
+        <file>MaterialenRegistreren.qml</file>
     </qresource>
 </RCC>
