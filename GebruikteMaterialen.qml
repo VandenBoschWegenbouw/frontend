@@ -3,6 +3,8 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 
+import vdBosch 1.0
+
 Page {
     id: page
     width: window.width
@@ -76,36 +78,14 @@ Page {
         y: dateBar.y + dateBar.height
         clip: true
 
-        model: ListModel {
-            ListElement {
-                project: "Test project"
-                klant: "Test klant"
-                materiaalType: "PVC"
-                beschrijving: "Bocht 90"
-                aantal: 5
-                hoeveelheidType: "st"
-            }
-
-            ListElement {
-                project: "Test project"
-                klant: "Test klant"
-                materiaalType: "PVC"
-                beschrijving: "Buis"
-                aantal: 10
-                hoeveelheidType: "m"
-            }
-
-//            ListElement {
-//                project: "Test project"
-//                klant: "Test klant"
-//                uren: 5
-//            }
-//            ListElement {
-//                project: "Test project"
-//                klant: "Test klant"
-//                uren: 3
-//            }
+        model: UsedPartsModel {
+            list: usedPartsList
         }
+
+        Component.onCompleted: {
+            usedPartsHandler.fetchUsedParts(usedPartsList)
+        }
+
         delegate: ColumnLayout {
             width: parent.width
 
@@ -113,7 +93,7 @@ Page {
                 width: parent.width
                 Text {
                     id: projectAndCustomer
-                    text: model.project + " - " + model.klant
+                    text: model.project + " - " + model.company
                     font.pixelSize: 22
                     leftPadding: parent.width*0.1
                 }
@@ -123,7 +103,7 @@ Page {
                 width: parent.width
                 Text {
                     id: materialAndType
-                    text: model.materiaalType + " - " + model.beschrijving
+                    text: model.partType + " - " + model.specification
                     font.pixelSize: 22
                     leftPadding: parent.width*0.2
                 }
@@ -134,7 +114,7 @@ Page {
 
                 Text {
                     id: amount
-                    text: model.aantal + model.hoeveelheidType
+                    text: model.amount + " " + model.amountType
                     font.pixelSize: 22
                     rightPadding: parent.width*0.1
                 }

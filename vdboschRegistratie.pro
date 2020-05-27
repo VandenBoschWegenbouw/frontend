@@ -14,6 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AmountType/amounttypecomponent.cpp \
+        AmountType/amounttypehandler.cpp \
+        AmountType/amounttypelist.cpp \
+        AmountType/amounttypemodel.cpp \
         Company/companycomponent.cpp \
         Company/companyhandler.cpp \
         Company/companylist.cpp \
@@ -24,10 +28,18 @@ SOURCES += \
         HourRegistration/hourregistrationcomponent.cpp \
         HourRegistration/hourregistrationhandler.cpp \
         HourRegistration/hourregistrationlist.cpp \
+        PartType/parttypecomponent.cpp \
+        PartType/parttypehandler.cpp \
+        PartType/parttypelist.cpp \
+        PartType/parttypemodel.cpp \
         Projects/projectcomponent.cpp \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
         Projects/projectmodel.cpp \
+        UsedParts/usedpartscomponent.cpp \
+        UsedParts/usedpartshandler.cpp \
+        UsedParts/usedpartslist.cpp \
+        UsedParts/usedpartsmodel.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -56,6 +68,10 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
+    AmountType/amounttypecomponent.h \
+    AmountType/amounttypehandler.h \
+    AmountType/amounttypelist.h \
+    AmountType/amounttypemodel.h \
     Company/companycomponent.h \
     Company/companyhandler.h \
     Company/companylist.h \
@@ -66,12 +82,23 @@ HEADERS += \
     HourRegistration/hourregistrationcomponent.h \
     HourRegistration/hourregistrationhandler.h \
     HourRegistration/hourregistrationlist.h \
+    PartType/parttypecomponent.h \
+    PartType/parttypehandler.h \
+    PartType/parttypelist.h \
+    PartType/parttypemodel.h \
     Projects/projectcomponent.h \
     Projects/projecthandler.h \
     Projects/projectlist.h \
     Projects/projectmodel.h \
+    Structs/AmountTypeStruct.h \
     Structs/CompanyStruct.h \
     Structs/HourRegistrationStruct.h \
     Structs/LoginStruct.h \
+    Structs/PartTypeStruct.h \
     Structs/ProjectStruct.h \
-    Structs/UserStruct.h
+    Structs/UsedPartsStruct.h \
+    Structs/UserStruct.h \
+    UsedParts/usedpartscomponent.h \
+    UsedParts/usedpartshandler.h \
+    UsedParts/usedpartslist.h \
+    UsedParts/usedpartsmodel.h
