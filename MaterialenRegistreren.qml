@@ -170,18 +170,13 @@ Page {
                     width: parent.width
                     height: parent.height
                 }
-
-                model: ListModel {
-                    ListElement {
-                        text: "Materiaal 1"
-                    }
-                    ListElement {
-                        text: "Materiaal 2"
-                    }
+                textRole: "type"
+                model: PartTypeModel {
+                    list: partTypeList
                 }
 
                 Component.onCompleted: {
-
+                    partTypeHandler.fetchPartTypes(partTypeList)
                 }
             }
 

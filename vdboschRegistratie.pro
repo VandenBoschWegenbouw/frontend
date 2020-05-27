@@ -24,6 +24,10 @@ SOURCES += \
         HourRegistration/hourregistrationcomponent.cpp \
         HourRegistration/hourregistrationhandler.cpp \
         HourRegistration/hourregistrationlist.cpp \
+        PartType/parttypecomponent.cpp \
+        PartType/parttypehandler.cpp \
+        PartType/parttypelist.cpp \
+        PartType/parttypemodel.cpp \
         Projects/projectcomponent.cpp \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
@@ -70,6 +74,10 @@ HEADERS += \
     HourRegistration/hourregistrationcomponent.h \
     HourRegistration/hourregistrationhandler.h \
     HourRegistration/hourregistrationlist.h \
+    PartType/parttypecomponent.h \
+    PartType/parttypehandler.h \
+    PartType/parttypelist.h \
+    PartType/parttypemodel.h \
     Projects/projectcomponent.h \
     Projects/projecthandler.h \
     Projects/projectlist.h \

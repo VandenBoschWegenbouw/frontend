@@ -26,6 +26,10 @@
 #include <UsedParts/usedpartsmodel.h>
 #include <UsedParts/usedpartshandler.h>
 
+#include <PartType/parttypelist.h>
+#include <PartType/parttypemodel.h>
+#include <PartType/parttypehandler.h>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -50,16 +54,22 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<UsedPartsList>("vdBosch",1,0,"UsedPartsList",
         QStringLiteral("UsedPartsList should not be created in QML"));
 
+    qmlRegisterType<PartTypeModel>("vdBosch",1,0, "PartTypeModel");
+    qmlRegisterUncreatableType<PartTypeList>("vdBosch",1,0,"PartTypeList",
+        QStringLiteral("PartTypeList should not be created in QML"));
+
     CompanyList companyList;
     ProjectList projectList;
     HourRegistrationList hourRegistrationList;
     UsedPartsList usedPartsList;
+    PartTypeList partTypeList;
 
     LoginHandler lHandler;
     HourRegistrationHandler hHandler;
     CompanyHandler cHandler;
     ProjectHandler pHandler;
     UsedPartsHandler uPHandler;
+    PartTypeHandler ptHandler;
 
     engine.rootContext()->setContextProperty("applicationPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("loginHandler", &lHandler);
@@ -67,11 +77,13 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("companyHandler", &cHandler);
     engine.rootContext()->setContextProperty("projectHandler", &pHandler);
     engine.rootContext()->setContextProperty("usedPartsHandler", &uPHandler);
+    engine.rootContext()->setContextProperty("partTypeHandler", &ptHandler);
 
     engine.rootContext()->setContextProperty("companyList", &companyList);
     engine.rootContext()->setContextProperty("projectList", &projectList);
     engine.rootContext()->setContextProperty("hourRegistrationList", &hourRegistrationList);
     engine.rootContext()->setContextProperty("usedPartsList", &usedPartsList);
+    engine.rootContext()->setContextProperty("partTypeList", &partTypeList);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
