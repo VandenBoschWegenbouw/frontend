@@ -44,7 +44,7 @@ void LoginComponent::_finished(QNetworkReply *reply)
         QJsonDocument doc = QJsonDocument::fromJson(arr);
         QJsonObject obj = doc.object();
 
-        user = {obj["idUser"].toInt(), obj["username"].toString(), obj["password"].toString(), obj["isAdmin"].toBool()};
+        LoginComponent::user = {obj["idUser"].toInt(), obj["username"].toString(), obj["password"].toString(), obj["isAdmin"].toBool()};
 
         emit correctLogin();
     } else {

@@ -28,12 +28,12 @@ void ProjectComponent::_finished(QNetworkReply *reply)
 {
     QByteArray arr = reply->readAll();
 
-    qDebug() << arr;
-
     if (arr.size() > 0) {
         QJsonDocument doc = QJsonDocument::fromJson(arr);
 
         QJsonArray jsonArr = doc.array();
+
+        mList->items().clear();
 
         foreach(const QJsonValue &value, jsonArr) {
             QJsonObject obj = value.toObject();

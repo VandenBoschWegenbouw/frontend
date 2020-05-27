@@ -144,6 +144,10 @@ Page {
                 id: spinBox
                 to: 10
                 implicitWidth: parent.width*0.6
+
+                onValueChanged: {
+                    hourRegistrationHandler.workedHours = value
+                }
             }
 
             Label {
@@ -173,6 +177,8 @@ Page {
                         width: parent.width
                         height: parent.height
                     }
+
+                    onTextChanged: hourRegistrationHandler.description = text
                 }
                 ScrollBar.vertical: ScrollBar{}
             }
@@ -213,6 +219,9 @@ Page {
                 MouseArea {
                     anchors.fill: btnAddHours
                     onClicked: {
+
+                        hourRegistrationHandler.addHours(projectList, cbSelectProject.currentIndex, hourRegistrationList)
+
                         stackView.pop()
                     }
                 }

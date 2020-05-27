@@ -11,8 +11,6 @@ void ProjectHandler::fetchProjects(CompanyList *companyList, ProjectList *projec
 {
     CompanyStruct company = companyList->items().at(indexSelectedCompany);
 
-    qDebug() << company.name;
-
     mComponent.fetchProjectsByCompany(projectList,company.id);
 }
 

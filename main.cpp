@@ -9,6 +9,9 @@
 //#include "Company/companylist.h"
 
 #include <Login/loginhandler.h>
+
+#include <HourRegistration/hourregistrationmodel.h>
+#include <HourRegistration/hourregistrationlist.h>
 #include <HourRegistration/hourregistrationhandler.h>
 
 #include <Company/companymodel.h>
@@ -35,8 +38,14 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<ProjectList>("vdBosch",1,0,"ProjectList",
         QStringLiteral("ProjectList should not be created in QML"));
 
+    qmlRegisterType<HourRegistrationModel>("vdBosch",1,0,"HourRegistrationModel");
+    qmlRegisterUncreatableType<HourRegistrationList>("vdBosch",1,0,"HourRegistrationList",
+        QStringLiteral("HourRegistrationList should not be created in QML"));
+
     CompanyList companyList;
     ProjectList projectList;
+    HourRegistrationList hourRegistrationList;
+
     LoginHandler lHandler;
     HourRegistrationHandler hHandler;
     CompanyHandler cHandler;
@@ -50,6 +59,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("companyList", &companyList);
     engine.rootContext()->setContextProperty("projectList", &projectList);
+    engine.rootContext()->setContextProperty("hourRegistrationList", &hourRegistrationList);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

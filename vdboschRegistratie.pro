@@ -18,12 +18,12 @@ SOURCES += \
         Company/companyhandler.cpp \
         Company/companylist.cpp \
         Company/companymodel.cpp \
+        HourRegistration/hourregistrationmodel.cpp \
         Login/logincomponent.cpp \
         Login/loginhandler.cpp \
         HourRegistration/hourregistrationcomponent.cpp \
         HourRegistration/hourregistrationhandler.cpp \
         HourRegistration/hourregistrationlist.cpp \
-        HourRegistration/hourregistrationmodel.cpp \
         Projects/projectcomponent.cpp \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
@@ -60,12 +60,12 @@ HEADERS += \
     Company/companyhandler.h \
     Company/companylist.h \
     Company/companymodel.h \
+    HourRegistration/hourregistrationmodel.h \
     Login/logincomponent.h \
     Login/loginhandler.h \
     HourRegistration/hourregistrationcomponent.h \
     HourRegistration/hourregistrationhandler.h \
     HourRegistration/hourregistrationlist.h \
-    HourRegistration/hourregistrationmodel.h \
     Projects/projectcomponent.h \
     Projects/projecthandler.h \
     Projects/projectlist.h \

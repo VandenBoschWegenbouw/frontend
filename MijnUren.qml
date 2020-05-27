@@ -3,6 +3,8 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 
+import vdBosch 1.0
+
 Page {
     id: page
     width: window.width
@@ -76,18 +78,10 @@ Page {
         y: dateBar.y + dateBar.height
         clip: true
 
-        model: ListModel {
-            ListElement {
-                project: "Test project"
-                klant: "Test klant"
-                uren: 5
-            }
-            ListElement {
-                project: "Test project"
-                klant: "Test klant"
-                uren: 3
-            }
+        model: HourRegistrationModel {
+            list: hourRegistrationList
         }
+
         delegate: ColumnLayout {
             width: parent.width
 
@@ -95,7 +89,7 @@ Page {
                 width: parent.width
                 Text {
                     id: projectAndCustomer
-                    text: model.project + " - " + model.klant
+                    text: model.project + " - " + model.company
                     x: 0
                     font.pixelSize: 22
                     horizontalAlignment: Text.AlignLeft
@@ -139,6 +133,10 @@ Page {
                     Layout.fillWidth: true
                 }
             }
+        }
+
+        Component.onCompleted: {
+            hourRegistrationHandler.fetchHours(hourRegistrationList)
         }
     }
 

@@ -34,10 +34,11 @@ void CompanyComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
+        mList->items().clear();
+
         foreach (const QJsonValue &value, jsonArr) {
             QJsonObject obj = value.toObject();
             mList->appendItem({obj["idCompany"].toInt(), obj["name"].toString()});
-
         }
     }
 }
