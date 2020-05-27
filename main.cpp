@@ -30,6 +30,10 @@
 #include <PartType/parttypemodel.h>
 #include <PartType/parttypehandler.h>
 
+#include <AmountType/amounttypelist.h>
+#include <AmountType/amounttypemodel.h>
+#include <AmountType/amounttypehandler.h>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -58,11 +62,16 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<PartTypeList>("vdBosch",1,0,"PartTypeList",
         QStringLiteral("PartTypeList should not be created in QML"));
 
+    qmlRegisterType<AmountTypeModel>("vdBosch",1,0, "AmountTypeModel");
+    qmlRegisterUncreatableType<AmountTypeList>("vdBosch",1,0,"AmountTypeList",
+        QStringLiteral("AmountTypeList should not be created in QML"));
+
     CompanyList companyList;
     ProjectList projectList;
     HourRegistrationList hourRegistrationList;
     UsedPartsList usedPartsList;
     PartTypeList partTypeList;
+    AmountTypeList amountTypeList;
 
     LoginHandler lHandler;
     HourRegistrationHandler hHandler;
@@ -70,6 +79,7 @@ int main(int argc, char *argv[])
     ProjectHandler pHandler;
     UsedPartsHandler uPHandler;
     PartTypeHandler ptHandler;
+    AmountTypeHandler atHandler;
 
     engine.rootContext()->setContextProperty("applicationPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("loginHandler", &lHandler);
@@ -78,12 +88,14 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("projectHandler", &pHandler);
     engine.rootContext()->setContextProperty("usedPartsHandler", &uPHandler);
     engine.rootContext()->setContextProperty("partTypeHandler", &ptHandler);
+    engine.rootContext()->setContextProperty("amountTypeHandler", &atHandler);
 
     engine.rootContext()->setContextProperty("companyList", &companyList);
     engine.rootContext()->setContextProperty("projectList", &projectList);
     engine.rootContext()->setContextProperty("hourRegistrationList", &hourRegistrationList);
     engine.rootContext()->setContextProperty("usedPartsList", &usedPartsList);
     engine.rootContext()->setContextProperty("partTypeList", &partTypeList);
+    engine.rootContext()->setContextProperty("amountTypeList", &amountTypeList);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

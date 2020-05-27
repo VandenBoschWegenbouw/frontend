@@ -14,6 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AmountType/amounttypecomponent.cpp \
+        AmountType/amounttypehandler.cpp \
+        AmountType/amounttypelist.cpp \
+        AmountType/amounttypemodel.cpp \
         Company/companycomponent.cpp \
         Company/companyhandler.cpp \
         Company/companylist.cpp \
@@ -64,6 +68,10 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
+    AmountType/amounttypecomponent.h \
+    AmountType/amounttypehandler.h \
+    AmountType/amounttypelist.h \
+    AmountType/amounttypemodel.h \
     Company/companycomponent.h \
     Company/companyhandler.h \
     Company/companylist.h \

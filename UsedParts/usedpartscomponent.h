@@ -14,6 +14,8 @@ public:
 
     void fetchUsedParts(UsedPartsList *list);
 
+    void addUsedParts(UsedPartsStruct upStruct, UsedPartsList *upList);
+
 private slots:
     void _finished(QNetworkReply *);
 
