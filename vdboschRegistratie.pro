@@ -28,6 +28,10 @@ SOURCES += \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
         Projects/projectmodel.cpp \
+        UsedParts/usedpartscomponent.cpp \
+        UsedParts/usedpartshandler.cpp \
+        UsedParts/usedpartslist.cpp \
+        UsedParts/usedpartsmodel.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -70,8 +74,15 @@ HEADERS += \
     Projects/projecthandler.h \
     Projects/projectlist.h \
     Projects/projectmodel.h \
+    Structs/AmountTypeStruct.h \
     Structs/CompanyStruct.h \
     Structs/HourRegistrationStruct.h \
     Structs/LoginStruct.h \
+    Structs/PartTypeStruct.h \
     Structs/ProjectStruct.h \
-    Structs/UserStruct.h
+    Structs/UsedPartsStruct.h \
+    Structs/UserStruct.h \
+    UsedParts/usedpartscomponent.h \
+    UsedParts/usedpartshandler.h \
+    UsedParts/usedpartslist.h \
+    UsedParts/usedpartsmodel.h
