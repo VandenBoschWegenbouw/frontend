@@ -121,6 +121,13 @@ void HourRegistrationModel::setList(HourRegistrationList *list)
         connect(mList, &HourRegistrationList::postItemAppended, this, [=]() {
             endInsertRows();
         });
+
+        connect(mList, &HourRegistrationList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &HourRegistrationList::postItemRemoved, this, [=]() {
+            endRemoveRows();
+        });
     }
 
     endResetModel();

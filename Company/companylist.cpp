@@ -1,5 +1,7 @@
 #include "companylist.h"
 
+#include <QDebug>
+
 CompanyList::CompanyList(QObject *parent) : QObject(parent)
 {
 
@@ -42,6 +44,18 @@ void CompanyList::appendItem(CompanyStruct item)
     mItems.append(item);
 
     emit postItemAppended();
+}
+
+void CompanyList::clearList()
+{
+    int size = mItems.size();
+    for (int i =0; i < size; i++) {
+        emit preItemRemoved(0);
+
+        mItems.removeLast();
+
+        emit postItemRemoved();
+    }
 }
 
 

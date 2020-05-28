@@ -33,7 +33,6 @@ void ProjectComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
-        mList->items().clear();
 
         foreach(const QJsonValue &value, jsonArr) {
             QJsonObject obj = value.toObject();

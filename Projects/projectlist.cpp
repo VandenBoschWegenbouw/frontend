@@ -47,3 +47,14 @@ void ProjectList::appendItem(ProjectStruct item)
 
     emit postItemAppended();
 }
+
+void ProjectList::clearItems()
+{
+    for (int i =0; i < mItems.size();i++) {
+        emit preItemRemoved(i);
+
+        mItems.removeAt(i);
+
+        emit postItemRemoved();
+    }
+}

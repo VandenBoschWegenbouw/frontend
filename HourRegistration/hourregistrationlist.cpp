@@ -30,3 +30,15 @@ void HourRegistrationList::appendItem(HourRegistrationStruct item)
 
     emit postItemAppended();
 }
+
+void HourRegistrationList::clearList()
+{
+    int size = mItems.size();
+    for (int i =0; i < size; i++) {
+        emit preItemRemoved(0);
+
+        mItems.removeLast();
+
+        emit postItemRemoved();
+    }
+}

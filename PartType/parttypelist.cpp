@@ -32,3 +32,14 @@ void PartTypeList::appendItem(PartTypeStruct item)
 
     emit postItemAppended();
 }
+
+void PartTypeList::clearList()
+{
+    for (int i =0; i < mItems.size();i++) {
+        emit preItemRemoved(i);
+
+        mItems.removeAt(i);
+
+        emit postItemRemoved();
+    }
+}

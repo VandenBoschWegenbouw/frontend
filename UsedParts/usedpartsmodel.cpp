@@ -136,6 +136,13 @@ void UsedPartsModel::setList(UsedPartsList *list)
         connect(mList, &UsedPartsList::postItemAppended, this, [=]() {
             endInsertRows();
         });
+
+        connect(mList, &UsedPartsList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &UsedPartsList::postItemRemoved, this, [=]() {
+            endRemoveRows();
+        });
     }
 
     endResetModel();

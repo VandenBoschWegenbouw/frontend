@@ -32,6 +32,8 @@ void AmountTypeComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
+
+
         foreach (const QJsonValue &value, jsonArr) {
             QJsonObject obj = value.toObject();
 

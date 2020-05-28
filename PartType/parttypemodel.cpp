@@ -93,6 +93,13 @@ void PartTypeModel::setList(PartTypeList *list)
         connect(mList, &PartTypeList::postItemAppended, this, [=]() {
             endInsertRows();
         });
+
+        connect(mList, &PartTypeList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &PartTypeList::postItemRemoved, this, [=]() {
+            endRemoveRows();
+        });
     }
 
     endResetModel();

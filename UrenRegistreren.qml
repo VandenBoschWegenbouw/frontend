@@ -71,7 +71,10 @@ Page {
 
                 Component.onCompleted: {
 
+                    cbSelectKlant.currentIndex = -1;
+
                     companyHandler.fetchCompanies(companyList)
+
                 }
 
                 onDisplayTextChanged: {

@@ -128,6 +128,14 @@ void ProjectModel::setList(ProjectList *list)
         connect(mList, &ProjectList::postItemAppended, this, [=]() {
             endInsertRows();
         });
+
+
+        connect(mList, &ProjectList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &ProjectList::postItemRemoved, this, [=]() {
+            endRemoveRows();
+        });
     }
 
     endResetModel();

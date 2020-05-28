@@ -32,3 +32,14 @@ void AmountTypeList::appendItem(AmountTypeStruct item)
 
     emit postItemAppended();
 }
+
+void AmountTypeList::clearList()
+{
+    for (int i =0; i < mItems.size();i++) {
+        emit preItemRemoved(i);
+
+        mItems.removeAt(i);
+
+        emit postItemRemoved();
+    }
+}
