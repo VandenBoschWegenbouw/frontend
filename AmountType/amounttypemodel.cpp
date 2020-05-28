@@ -94,6 +94,13 @@ void AmountTypeModel::setList(AmountTypeList *list)
         connect(mList, &AmountTypeList::postItemAppended, this, [=]() {
             endInsertRows();
         });
+
+        connect(mList, &AmountTypeList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &AmountTypeList::postItemRemoved, this, [=]() {
+            endRemoveRows();
+        });
     }
 
     endResetModel();

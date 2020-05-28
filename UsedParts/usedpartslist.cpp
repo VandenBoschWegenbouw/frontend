@@ -31,3 +31,15 @@ void UsedPartsList::appendItem(UsedPartsStruct item)
 
     emit postItemAppended();
 }
+
+void UsedPartsList::clearList()
+{
+    int size = mItems.size();
+    for (int i =0; i < size; i++) {
+        emit preItemRemoved(0);
+
+        mItems.removeLast();
+
+        emit postItemRemoved();
+    }
+}

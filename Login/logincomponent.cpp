@@ -48,8 +48,8 @@ void LoginComponent::_finished(QNetworkReply *reply)
 
         emit correctLogin();
     } else {
-        emit correctLogin();
-        //emit incorrectLogin();
+        //emit correctLogin();
+        emit incorrectLogin();
     }
 
 }

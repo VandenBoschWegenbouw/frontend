@@ -19,8 +19,14 @@ signals:
     void preItemAppended();
     void postItemAppended();
 
+    void preItemRemoved(int index);
+    void postItemRemoved();
+
 public slots:
     void appendItem(PartTypeStruct item);
+
+    void clearList();
+
 
 private:
     QVector<PartTypeStruct> mItems;

@@ -18,12 +18,18 @@ signals:
     void preItemAppended();
     void postItemAppended();
 
+    void preItemRemoved(int index);
+    void postItemRemoved();
+
 public slots:
     void appendItem();
     void appendItem(ProjectStruct item);
 
+    void clearItems();
+
 private:
     QVector<ProjectStruct> mItems;
+
 
 };
 

@@ -18,8 +18,13 @@ signals:
     void preItemAppended();
     void postItemAppended();
 
+    void preItemRemoved(int index);
+    void postItemRemoved();
+
 public slots:
     void appendItem(HourRegistrationStruct item);
+
+    void clearList();
 
 private:
     QVector<HourRegistrationStruct> mItems;

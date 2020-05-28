@@ -61,7 +61,7 @@ Qt::ItemFlags CompanyModel::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    return Qt::ItemIsSelectable;
+    return Qt::ItemIsEditable;
 }
 
 QHash<int, QByteArray> CompanyModel::roleNames() const
@@ -94,6 +94,13 @@ void CompanyModel::setList(CompanyList *list)
 
         connect(mList, &CompanyList::postItemAppended, this, [=]() {
             endInsertRows();
+        });
+
+        connect(mList, &CompanyList::preItemRemoved, this, [=](int index) {
+            beginRemoveRows(QModelIndex(), index, index);
+        });
+        connect(mList, &CompanyList::postItemRemoved, this, [=]() {
+            endRemoveRows();
         });
     }
 
