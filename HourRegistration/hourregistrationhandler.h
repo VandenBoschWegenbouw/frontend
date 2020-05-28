@@ -30,9 +30,12 @@ public slots:
 
     void addHours(ProjectList *pList, int selectedPIndex, HourRegistrationList *hList);
 
+    void workedHard();
+
 signals:
     void workedHoursChanged(const int& workedHours);
     void descriptionChanged(const QString& description);
+    void workedTooHard();
 
 private:
     int mWorkedHours;

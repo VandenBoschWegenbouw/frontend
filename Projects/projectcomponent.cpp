@@ -24,8 +24,21 @@ void ProjectComponent::fetchProjectsByCompany(ProjectList *list, int idCompany)
     manager.get(request);
 }
 
+void ProjectComponent::fetchProjects(ProjectList *list)
+{
+    mList = list;
+
+    const QString url = "http://localhost:9000/projects/";
+
+    QNetworkRequest request(url);
+    request.setRawHeader("Content-Type", "application/json");
+
+    manager.get(request);
+}
+
 void ProjectComponent::_finished(QNetworkReply *reply)
 {
+
     QByteArray arr = reply->readAll();
 
     if (arr.size() > 0) {
@@ -33,6 +46,7 @@ void ProjectComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
+        mList->clearItems();
 
         foreach(const QJsonValue &value, jsonArr) {
             QJsonObject obj = value.toObject();
@@ -40,7 +54,7 @@ void ProjectComponent::_finished(QNetworkReply *reply)
 
             CompanyStruct company = {comp["idCompany"].toInt(), comp["name"].toString()};
 
-            mList->appendItem({obj["idProject"].toInt(), obj["name"].toString(), obj["description"].toString(), obj["finished"].toBool(),obj["startDate"].toVariant().toDate(), obj["finishDate"].toVariant().toDate(), company});
+            mList->appendItem({obj["idProject"].toInt(), obj["name"].toString(), obj["description"].toString(), obj["isFinished"].toBool(),obj["startDate"].toVariant().toDate(), obj["finishDate"].toVariant().toDate(), company});
         }
     }
 }

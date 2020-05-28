@@ -85,6 +85,16 @@ ApplicationWindow {
                     drawer.close()
                 }
             }
+            ItemDelegate {
+                id: exportHours
+                visible: false
+                text: "Exporteer uren"
+                width: parent.width
+                onClicked: {
+                    stackView.replace("ExportProject.qml")
+                    drawer.close()
+                }
+            }
         }
     }
 
@@ -102,9 +112,29 @@ ApplicationWindow {
             toolBar.visible = true;
         }
 
+        onCorrectAdminLogin: {
+            svItems.replace("MijnUren.qml")
+            toolBar.visible = true;
+            exportHours.visible = true;
+        }
+
         onIncorrectLogin: {
             incorrectLogin.visible = true
         }
+    }
+
+    Connections {
+        target: hourRegistrationHandler
+        onWorkedTooHard: {
+            workedTooHard.visible = true
+        }
+
+    }
+
+    MessageDialog {
+        id: workedTooHard
+        title: "Worked too hard"
+        text: "Sorry you worked too hard, you have deserved some rest!"
     }
 
     MessageDialog {

@@ -22,7 +22,6 @@ signals:
     void postItemRemoved();
 
 public slots:
-    void appendItem();
     void appendItem(ProjectStruct item);
 
     void clearItems();

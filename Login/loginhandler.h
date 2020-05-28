@@ -23,12 +23,14 @@ public:
 public slots:
     void login();
     void correctLoginReceived();
+    void correctAdminLoginReceived();
     void incorrectLoginReceived();
 
 signals:
     void usernameChanged(const QString& username);
     void passwordChanged(const QString& password);
     void correctLogin();
+    void correctAdminLogin();
     void incorrectLogin();
 
 private:

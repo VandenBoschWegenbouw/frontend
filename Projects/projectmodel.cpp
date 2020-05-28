@@ -36,7 +36,7 @@ QVariant ProjectModel::data(const QModelIndex &index, int role) const
         case FinishDateRole:
             return QVariant(item.finish_Date);
         case CompanyRole:
-            throw 20;
+            return QVariant(item.company.name);
 //            QVariant packet;
 //            packet.setValue(item.company);
 //            return packet;
@@ -72,7 +72,7 @@ bool ProjectModel::setData(const QModelIndex &index, const QVariant &value, int 
             item.finish_Date = value.toDate();
         break;
         case CompanyRole:
-            throw 20;
+            item.company.name = value.toString();
             //item.company = qvariant_cast<CompanyStruct>(value);
         break;
     }

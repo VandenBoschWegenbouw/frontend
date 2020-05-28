@@ -18,6 +18,7 @@ public:
     static UserStruct user;
 
 signals:
+    void correctAdminLogin();
     void correctLogin();
     void incorrectLogin();
 

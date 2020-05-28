@@ -79,7 +79,7 @@ Page {
 
                 onDisplayTextChanged: {
 
-                    projectHandler.fetchProjects(companyList, projectList, currentIndex);
+                    projectHandler.fetchProjectsByCompany(companyList, projectList, currentIndex);
 
                     cbSelectProject.enabled = true;
 

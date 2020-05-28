@@ -18,6 +18,7 @@ public:
     void addHours(HourRegistrationStruct hr, HourRegistrationList *list);
 
 signals:
+    void workedTooHard();
 
 private slots:
     void _finished(QNetworkReply *);

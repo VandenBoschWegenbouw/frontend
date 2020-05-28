@@ -4,7 +4,7 @@
 
 HourRegistrationHandler::HourRegistrationHandler(QObject *parent) : QObject(parent)
 {
-
+    connect(&mComponent, &HourRegistrationComponent::workedTooHard, this, &HourRegistrationHandler::workedHard);
 }
 
 int HourRegistrationHandler::workedHours() const
@@ -55,5 +55,10 @@ void HourRegistrationHandler::addHours(ProjectList *pList, int selectedPIndex, H
     mComponent.addHours(hr, hList);
 
 
+}
+
+void HourRegistrationHandler::workedHard()
+{
+    emit workedTooHard();
 }
 

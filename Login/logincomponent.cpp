@@ -46,7 +46,13 @@ void LoginComponent::_finished(QNetworkReply *reply)
 
         LoginComponent::user = {obj["idUser"].toInt(), obj["username"].toString(), obj["password"].toString(), obj["isAdmin"].toBool()};
 
-        emit correctLogin();
+        if (user.admin) {
+            emit correctAdminLogin();
+        } else {
+            emit correctLogin();
+        }
+
+
     } else {
         //emit correctLogin();
         emit incorrectLogin();

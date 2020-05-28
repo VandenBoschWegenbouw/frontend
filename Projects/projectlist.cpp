@@ -22,23 +22,6 @@ bool ProjectList::setItemAt(int index, const ProjectStruct &item)
     return true;
 }
 
-void ProjectList::appendItem()
-{
-    emit preItemAppended();
-
-    ProjectStruct project;
-    project.id = -1;
-    project.name = "This is a test project";
-    project.company = {};
-    project.finished = false;
-    project.description = "This is a test description";
-    project.start_date = QDate::currentDate();
-
-    mItems.append(project);
-
-    emit postItemAppended();
-}
-
 void ProjectList::appendItem(ProjectStruct item)
 {
     emit preItemAppended();
@@ -50,10 +33,11 @@ void ProjectList::appendItem(ProjectStruct item)
 
 void ProjectList::clearItems()
 {
-    for (int i =0; i < mItems.size();i++) {
-        emit preItemRemoved(i);
+    int size = mItems.size();
+    for (int i =0; i < size; i++) {
+        emit preItemRemoved(0);
 
-        mItems.removeAt(i);
+        mItems.removeLast();
 
         emit postItemRemoved();
     }

@@ -15,6 +15,8 @@ public:
 
     void fetchProjectsByCompany(ProjectList *list, int idCompany);
 
+    void fetchProjects(ProjectList *list);
+
 signals:
 
 private slots:

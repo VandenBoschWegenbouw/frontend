@@ -7,6 +7,7 @@
 
 #include <Projects/projectlist.h>
 #include <Projects/projectcomponent.h>
+#include <Projects/Export/exportcomponent.h>
 
 class ProjectHandler : public QObject
 {
@@ -15,12 +16,17 @@ public:
     explicit ProjectHandler(QObject *parent = nullptr);
 
 public slots:
-    void fetchProjects(CompanyList *companyList, ProjectList *projectList, int indexSelectedCompany);
+    void fetchProjectsByCompany(CompanyList *companyList, ProjectList *projectList, int indexSelectedCompany);
+
+    void fetchProjects(ProjectList *list);
+
+    void exportProject(int id);
 
 signals:
 
 private:
     ProjectComponent mComponent;
+    ExportComponent mExportComponent;
 
 };
 

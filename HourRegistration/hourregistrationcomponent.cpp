@@ -79,11 +79,12 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
-        mList->clearList();
+        if (jsonArr.size() > 0) {
+            mList->clearList();
+        }
 
-        foreach(const QJsonValue &value, jsonArr) {
-
-            QJsonObject obj = value.toObject();
+        if (jsonArr.size() == 0 && !doc.object().isEmpty()) {
+            QJsonObject obj = doc.object();
             QJsonObject jsonUser = obj["user"].toObject();
             QJsonObject jsonCompany = obj["project"].toObject()["company"].toObject();
             QJsonObject jsonProject = obj["project"].toObject();
@@ -93,8 +94,22 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
             UserStruct user = {jsonUser["idUser"].toInt(), jsonUser["username"].toString(), jsonUser["password"].toString(), jsonUser["isAdmin"].toBool()};
 
             mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
-        }
+        } else {
+            foreach(const QJsonValue &value, jsonArr) {
+                QJsonObject obj = value.toObject();
+                QJsonObject jsonUser = obj["user"].toObject();
+                QJsonObject jsonCompany = obj["project"].toObject()["company"].toObject();
+                QJsonObject jsonProject = obj["project"].toObject();
 
+                CompanyStruct company = {jsonCompany["idCompany"].toInt(), jsonCompany["name"].toString()};
+                ProjectStruct project = {jsonProject["idProject"].toInt(), jsonProject["name"].toString(), jsonProject["description"].toString(), jsonProject["finished"].toBool(),jsonProject["startDate"].toVariant().toDate(), jsonProject["finishDate"].toVariant().toDate(), company};
+                UserStruct user = {jsonUser["idUser"].toInt(), jsonUser["username"].toString(), jsonUser["password"].toString(), jsonUser["isAdmin"].toBool()};
+
+                mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
+            }
+        }
+    } else {
+        emit workedTooHard();
     }
 }
 

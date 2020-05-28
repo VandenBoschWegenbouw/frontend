@@ -1,4 +1,4 @@
-QT += quick
+QT += quick widgets
 
 CONFIG += c++11
 
@@ -7,6 +7,12 @@ CONFIG += c++11
 # depend on your compiler). Refer to the documentation for the
 # deprecated API to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+
+# QXlsx code for Application Qt project
+QXLSX_PARENTPATH=./         # current QXlsx path is . (. means curret directory)
+QXLSX_HEADERPATH=./header/  # current QXlsx header path is ./header/
+QXLSX_SOURCEPATH=./source/  # current QXlsx source path is ./source/
+include(./QXlsx.pri)
 
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -32,6 +38,7 @@ SOURCES += \
         PartType/parttypehandler.cpp \
         PartType/parttypelist.cpp \
         PartType/parttypemodel.cpp \
+        Projects/Export/exportcomponent.cpp \
         Projects/projectcomponent.cpp \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
@@ -86,6 +93,7 @@ HEADERS += \
     PartType/parttypehandler.h \
     PartType/parttypelist.h \
     PartType/parttypemodel.h \
+    Projects/Export/exportcomponent.h \
     Projects/projectcomponent.h \
     Projects/projecthandler.h \
     Projects/projectlist.h \

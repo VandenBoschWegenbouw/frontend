@@ -7,7 +7,7 @@ ProjectHandler::ProjectHandler(QObject *parent) : QObject(parent)
 
 }
 
-void ProjectHandler::fetchProjects(CompanyList *companyList, ProjectList *projectList, int indexSelectedCompany)
+void ProjectHandler::fetchProjectsByCompany(CompanyList *companyList, ProjectList *projectList, int indexSelectedCompany)
 {
     CompanyStruct company;
 
@@ -18,4 +18,14 @@ void ProjectHandler::fetchProjects(CompanyList *companyList, ProjectList *projec
     }
 
     mComponent.fetchProjectsByCompany(projectList,company.id);
+}
+
+void ProjectHandler::fetchProjects(ProjectList *list)
+{
+    mComponent.fetchProjects(list);
+}
+
+void ProjectHandler::exportProject(int id)
+{
+    mExportComponent.exportProjects(id);
 }

@@ -1,9 +1,19 @@
 #include "loginhandler.h"
 #include <QDebug>
 
+#include "xlsxdocument.h"
+#include "xlsxchartsheet.h"
+#include "xlsxcellrange.h"
+#include "xlsxchart.h"
+#include "xlsxrichstring.h"
+#include "xlsxworkbook.h"
+
+#include <QFileDialog>
+
 LoginHandler::LoginHandler(QObject *parent) : QObject(parent)
 {
     connect(&component, &LoginComponent::correctLogin, this, &LoginHandler::correctLoginReceived);
+    connect(&component, &LoginComponent::correctAdminLogin, this, &LoginHandler::correctAdminLoginReceived);
     connect(&component, &LoginComponent::incorrectLogin, this, &LoginHandler::incorrectLoginReceived);
 }
 
@@ -38,6 +48,11 @@ void LoginHandler::login() {
 void LoginHandler::correctLoginReceived()
 {
     emit correctLogin();
+}
+
+void LoginHandler::correctAdminLoginReceived()
+{
+    emit correctAdminLogin();
 }
 
 void LoginHandler::incorrectLoginReceived()
