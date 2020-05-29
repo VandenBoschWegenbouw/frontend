@@ -5,6 +5,7 @@
 #include <Company/companylist.h>
 #include <Projects/projectlist.h>
 #include <HourRegistration/hourregistrationcomponent.h>
+#include <HourRegistration/Delete/deletecomponent.h>
 
 #include <HourRegistration/hourregistrationlist.h>
 
@@ -27,8 +28,11 @@ public:
 public slots:
     //To give the overview of all hour registrations
     void fetchHours(HourRegistrationList *list);
+    void fetchHours(HourRegistrationList *list, QString date);
 
-    void addHours(ProjectList *pList, int selectedPIndex, HourRegistrationList *hList);
+    void addHours(ProjectList *pList, int selectedPIndex, HourRegistrationList *hList, QString date);
+
+    void deleteHours(int index, HourRegistrationList *hList);
 
     void workedHard();
 
@@ -44,6 +48,7 @@ private:
     CompanyList *mList;
 
     HourRegistrationComponent mComponent;
+    DeleteComponent mDeleteComponent;
 };
 
 #endif // HOURREGISTRATIONHANDLER_H

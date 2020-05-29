@@ -26,6 +26,8 @@ public slots:
 
     void clearList();
 
+    void removeAtIndex(int index);
+
 private:
     QVector<HourRegistrationStruct> mItems;
 

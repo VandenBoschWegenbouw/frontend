@@ -34,6 +34,8 @@
 #include <AmountType/amounttypemodel.h>
 #include <AmountType/amounttypehandler.h>
 
+#include <Dates/datehandler.h>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -80,6 +82,7 @@ int main(int argc, char *argv[])
     UsedPartsHandler uPHandler;
     PartTypeHandler ptHandler;
     AmountTypeHandler atHandler;
+    DateHandler dHandler;
 
     engine.rootContext()->setContextProperty("applicationPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("loginHandler", &lHandler);
@@ -89,6 +92,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("usedPartsHandler", &uPHandler);
     engine.rootContext()->setContextProperty("partTypeHandler", &ptHandler);
     engine.rootContext()->setContextProperty("amountTypeHandler", &atHandler);
+    engine.rootContext()->setContextProperty("dateHandler", &dHandler);
 
     engine.rootContext()->setContextProperty("companyList", &companyList);
     engine.rootContext()->setContextProperty("projectList", &projectList);

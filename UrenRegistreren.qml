@@ -116,7 +116,6 @@ Page {
                 implicitHeight: parent.height*0.05
 
 
-                textRole: "name"
                 model: ProjectModel {
                     list: projectList
                 }
@@ -128,14 +127,109 @@ Page {
                     width: parent.width
                     height: parent.height
                 }
+
+                textRole: "name"
+
+
+                delegate: ItemDelegate {
+                    width: cbSelectProject.width
+                    text: model.finished ? model.name + " - AFGEROND" : model.name
+                    font.weight: cbSelectProject.currentIndex === index ? Font.DemiBold : Font.Normal
+                    enabled: !model.finished
+                    highlighted: ListView.isCurrentItem
+
+                    Binding {
+                        target: contentItem
+                        property: "color"
+                        value: model.finished ? "gray" : "black"
+                    }
+                }
             }
-
-
 
             Label {
                 Layout.column: 1
                 Layout.columnSpan: 3
                 Layout.row: 7
+                id: lblDatum
+                text: qsTr("Datum")
+                font.pointSize: 16
+            }
+
+            Rectangle {
+                Layout.column: 1
+                Layout.columnSpan: 3
+                Layout.row: 8
+                width: cbSelectKlant.width
+                height: cbSelectKlant.height
+
+                color: "#C0BEBD"
+
+                Label {
+                    id: lblDate
+                    text: dateHandler.date.toString("dd-MM-yyyy H:m:ss AP")
+                    color: "white"
+                    font.pixelSize: 16
+                    x: parent.width/2-lblDate.width/2
+                    y: parent.height/2-lblDate.height/2
+                }
+
+                Button {
+                    id: previousDate
+                    text: "<"
+                    font.pixelSize: 16
+                    width: parent.height
+                    height: parent.height
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: parent.opacity
+                        color: "white"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+                    background: Rectangle {
+                        anchors.fill: parent
+                        color: "#C0BEBD"
+                    }
+
+                    onClicked: {
+                        dateHandler.decreaseDate()
+                    }
+                }
+
+                Button {
+                    id: nextDate
+                    text: ">"
+                    font.pixelSize: 16
+                    width: parent.height
+                    height: parent.height
+                    x: parent.width-nextDate.width
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: parent.opacity
+                        color: "white"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+                    background: Rectangle {
+                        anchors.fill: parent
+                        color: "#C0BEBD"
+                    }
+                    onClicked: {
+                        dateHandler.increaseDate()
+                    }
+                }
+
+            }
+
+
+            Label {
+                Layout.column: 1
+                Layout.columnSpan: 3
+                Layout.row: 9
                 id: lblUren
                 text: qsTr("Uren")
                 font.pointSize: 16
@@ -143,7 +237,7 @@ Page {
 
             SpinBox {
                 Layout.column: 1
-                Layout.row: 8
+                Layout.row: 10
                 id: spinBox
                 to: 10
                 implicitWidth: parent.width*0.6
@@ -157,7 +251,7 @@ Page {
                 id: lblOpmerking
                 text: "Beschrijving"
                 Layout.column: 1
-                Layout.row: 9
+                Layout.row: 11
                 font.pointSize: 16
             }
 
@@ -169,7 +263,7 @@ Page {
                 contentHeight: textArea.implicitHeight
                 Layout.column: 1
                 Layout.columnSpan: 3
-                Layout.row: 10
+                Layout.row: 12
                 TextArea.flickable: TextArea {
                     id: textArea
                     wrapMode: Text.WordWrap
@@ -186,22 +280,13 @@ Page {
                 ScrollBar.vertical: ScrollBar{}
             }
 
-
-
-//            Button {
-//                Layout.column: 1
-//                Layout.row: 10
-//                id: btnAddHours
-//                text: qsTr("Voeg uren toe")
-//            }
-
             Rectangle {
                 id: btnAddHours
                 y: parent.height*0.7
                 width: parent.width*0.3
                 Layout.column: 1
                 Layout.columnSpan: 3
-                Layout.row: 11
+                Layout.row: 13
                 height: 40
                 color: "#6abc93"
                 radius: 10
@@ -223,7 +308,7 @@ Page {
                     anchors.fill: btnAddHours
                     onClicked: {
 
-                        hourRegistrationHandler.addHours(projectList, cbSelectProject.currentIndex, hourRegistrationList)
+                        hourRegistrationHandler.addHours(projectList, cbSelectProject.currentIndex, hourRegistrationList, dateHandler.date)
 
                         stackView.pop()
                     }
@@ -233,21 +318,21 @@ Page {
             Item {
                 Layout.column: 1
                 Layout.columnSpan: 3
-                Layout.row: 12
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 13
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
                 Layout.row: 14
+                Layout.fillHeight: true
+            }
+
+            Item {
+                Layout.column: 1
+                Layout.columnSpan: 3
+                Layout.row: 15
+                Layout.fillHeight: true
+            }
+
+            Item {
+                Layout.column: 1
+                Layout.columnSpan: 3
+                Layout.row: 16
                 Layout.fillHeight: true
             }
 

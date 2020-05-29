@@ -1,5 +1,7 @@
 #include "hourregistrationlist.h"
 
+#include <QDebug>
+
 HourRegistrationList::HourRegistrationList(QObject *parent) : QObject(parent)
 {
 }
@@ -38,6 +40,17 @@ void HourRegistrationList::clearList()
         emit preItemRemoved(0);
 
         mItems.removeLast();
+
+        emit postItemRemoved();
+    }
+}
+
+void HourRegistrationList::removeAtIndex(int index)
+{
+    if (index >= 0 && index < mItems.size()) {
+        emit preItemRemoved(index);
+
+        mItems.removeAt(index);
 
         emit postItemRemoved();
     }

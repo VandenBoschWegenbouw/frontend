@@ -13,7 +13,7 @@ class HourRegistrationComponent : public QObject
 public:
     explicit HourRegistrationComponent(QObject *parent = nullptr);
 
-    void fetchHours(HourRegistrationList *list);
+    void fetchHours(HourRegistrationList *list, QDate date);
 
     void addHours(HourRegistrationStruct hr, HourRegistrationList *list);
 
@@ -26,6 +26,7 @@ private slots:
 private:
     QNetworkAccessManager manager;
     HourRegistrationList *mList;
+    QDate fetchedDate;
 
 };
 

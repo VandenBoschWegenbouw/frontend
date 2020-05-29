@@ -28,6 +28,8 @@ SOURCES += \
         Company/companyhandler.cpp \
         Company/companylist.cpp \
         Company/companymodel.cpp \
+        Dates/datehandler.cpp \
+        HourRegistration/Delete/deletecomponent.cpp \
         HourRegistration/hourregistrationmodel.cpp \
         Login/logincomponent.cpp \
         Login/loginhandler.cpp \
@@ -83,6 +85,8 @@ HEADERS += \
     Company/companyhandler.h \
     Company/companylist.h \
     Company/companymodel.h \
+    Dates/datehandler.h \
+    HourRegistration/Delete/deletecomponent.h \
     HourRegistration/hourregistrationmodel.h \
     Login/logincomponent.h \
     Login/loginhandler.h \

@@ -2,6 +2,8 @@ import QtQuick 2.14
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.2
+import Qt.labs.calendar 1.0
 
 import vdBosch 1.0
 
@@ -13,6 +15,10 @@ Page {
     implicitHeight: 480
     title: qsTr("Mijn Uren")
 
+
+    property int selectedRow
+
+
     Rectangle {
         id: dateBar
         color: "#C0BEBD"
@@ -21,7 +27,7 @@ Page {
 
         Label {
             id: date
-            text: Qt.formatDate(new Date(), "dd-MM-yyyy")
+            text: dateHandler.date
             color: "white"
             font.pixelSize: 22
             x: parent.width/2-date.width/2
@@ -47,6 +53,11 @@ Page {
                 anchors.fill: parent
                 color: "#C0BEBD"
             }
+
+            onClicked: {
+                dateHandler.decreaseDate()
+                hourRegistrationHandler.fetchHours(hourRegistrationList, dateHandler.date)
+            }
         }
 
         Button {
@@ -69,6 +80,12 @@ Page {
                 anchors.fill: parent
                 color: "#C0BEBD"
             }
+
+
+            onClicked: {
+                dateHandler.increaseDate()
+                hourRegistrationHandler.fetchHours(hourRegistrationList, dateHandler.date)
+            }
         }
     }
 
@@ -86,7 +103,8 @@ Page {
             width: parent.width
 
             RowLayout {
-                width: parent.width
+                width: parent.width*0.8
+                x: parent.width*0.1
                 Text {
                     id: projectAndCustomer
                     text: model.project + " - " + model.company
@@ -98,22 +116,44 @@ Page {
 
                 Item {
                     Layout.fillWidth: true
-                    height: time.implicitHeight
-                    Text {
-                        id: time
-                        text: model.uren + " UUR"
-                        x: parent.width-time.width
-                        font.pixelSize: 22
-                        horizontalAlignment: Text.AlignRight
-
-                        Component.onCompleted: {
-
-                            time.rightPadding = (parent.width*0.1)+(time.width/2)
-
-                        }
-
-                    }
                 }
+                Item {
+                    Layout.fillWidth: true
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                Text {
+                    id: time
+                    text: model.uren + " UUR"
+                    font.pixelSize: 22
+                    horizontalAlignment: Text.AlignRight
+                }
+
+                Button {
+                    id: delRegistration
+                    text: "X"
+
+                    visible: !model.projectFinished
+
+                    implicitWidth: 30
+                    x: parent.right - delRegistration.width
+
+                    onClicked: {
+                        selectedRow = index;
+                        confirmDeletion.open()
+                    }
+
+                    //delRegistration.rightPadding: parent.width*0.1
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
+
+
             }
 
             RowLayout {
@@ -140,8 +180,6 @@ Page {
         }
     }
 
-
-
     RoundButton {
         id: addHours
         text: "+"
@@ -157,7 +195,6 @@ Page {
 
         contentItem: Text {
             text: addHours.text
-            //font: addHours.font
             font.pointSize: 40
             color: "white"
             horizontalAlignment: Text.AlignHCenter
@@ -167,6 +204,19 @@ Page {
 
         onClicked: {
             stackView.push("UrenRegistreren.qml")
+        }
+    }
+
+
+    MessageDialog {
+        id: confirmDeletion
+        title: "Zeker verwijderen?"
+        text: "Ben je er zeker van dat je de uren wilt verwijderen? Dit kan niet meer ongedaan gemaakt worden"
+
+        standardButtons: StandardButton.Yes | StandardButton.No
+
+        onYes: {
+            hourRegistrationHandler.deleteHours(selectedRow, hourRegistrationList)
         }
     }
 

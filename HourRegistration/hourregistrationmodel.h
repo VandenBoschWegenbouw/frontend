@@ -20,7 +20,8 @@ public:
         HoursRole,
         DateRole,
         DescriptionRole,
-        CompanyRole
+        CompanyRole,
+        ProjectFinishedRole
     };
 
     // Basic functionality:

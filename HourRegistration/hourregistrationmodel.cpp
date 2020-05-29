@@ -28,7 +28,9 @@ QVariant HourRegistrationModel::data(const QModelIndex &index, int role) const
         case UserRole:
             throw 20;
         case ProjectRole:
-        return QVariant(item.project.name);
+            return QVariant(item.project.name);
+        case ProjectFinishedRole:
+            return QVariant(item.project.finished);
         case HoursRole:
             return QVariant(item.hours);
         case DateRole:
@@ -54,8 +56,13 @@ bool HourRegistrationModel::setData(const QModelIndex &index, const QVariant &va
         break;
         case UserRole:
             throw 20;
+        break;
         case ProjectRole:
             item.project.name = value.toString();
+        break;
+        case ProjectFinishedRole:
+            item.project.finished = value.toBool();
+        break;
         case HoursRole:
             item.hours = value.toInt();
         break;
@@ -67,6 +74,7 @@ bool HourRegistrationModel::setData(const QModelIndex &index, const QVariant &va
         break;
         case CompanyRole:
             item.project.company.name = value.toString();
+        break;
     }
 
     if (mList->setItemAt(index.row(), item)) {
@@ -94,6 +102,7 @@ QHash<int, QByteArray> HourRegistrationModel::roleNames() const
     names[DateRole] = "date";
     names[DescriptionRole] = "description";
     names[CompanyRole] = "company";
+    names[ProjectFinishedRole] = "projectFinished";
 
     return names;
 }

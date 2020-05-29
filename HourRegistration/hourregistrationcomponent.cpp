@@ -14,12 +14,14 @@ HourRegistrationComponent::HourRegistrationComponent(QObject *parent) : QObject(
     connect(&manager, &QNetworkAccessManager::finished, this, &HourRegistrationComponent::_finished);
 }
 
-void HourRegistrationComponent::fetchHours(HourRegistrationList *list)
+void HourRegistrationComponent::fetchHours(HourRegistrationList *list, QDate date)
 {
     mList = list;
 
+    fetchedDate = date;
+
     UserStruct user = LoginComponent::user;
-    QString url = "http://localhost:9000/hourregistration/" + QDate::currentDate().toString("yyyy-MM-dd") + "/user/" + QString::number(user.id);
+    QString url = "http://localhost:9000/hourregistration/" + date.toString("yyyy-MM-dd") + "/user/" + QString::number(user.id);
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");
@@ -90,10 +92,12 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
             QJsonObject jsonProject = obj["project"].toObject();
 
             CompanyStruct company = {jsonCompany["idCompany"].toInt(), jsonCompany["name"].toString()};
-            ProjectStruct project = {jsonProject["idProject"].toInt(), jsonProject["name"].toString(), jsonProject["description"].toString(), jsonProject["finished"].toBool(),jsonProject["startDate"].toVariant().toDate(), jsonProject["finishDate"].toVariant().toDate(), company};
+            ProjectStruct project = {jsonProject["idProject"].toInt(), jsonProject["name"].toString(), jsonProject["description"].toString(), jsonProject["isFinished"].toBool(),jsonProject["startDate"].toVariant().toDate(), jsonProject["finishDate"].toVariant().toDate(), company};
             UserStruct user = {jsonUser["idUser"].toInt(), jsonUser["username"].toString(), jsonUser["password"].toString(), jsonUser["isAdmin"].toBool()};
 
-            mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
+            if (obj["date"].toVariant().toDate() == fetchedDate) {
+                mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
+            }
         } else {
             foreach(const QJsonValue &value, jsonArr) {
                 QJsonObject obj = value.toObject();
@@ -102,10 +106,12 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
                 QJsonObject jsonProject = obj["project"].toObject();
 
                 CompanyStruct company = {jsonCompany["idCompany"].toInt(), jsonCompany["name"].toString()};
-                ProjectStruct project = {jsonProject["idProject"].toInt(), jsonProject["name"].toString(), jsonProject["description"].toString(), jsonProject["finished"].toBool(),jsonProject["startDate"].toVariant().toDate(), jsonProject["finishDate"].toVariant().toDate(), company};
+                ProjectStruct project = {jsonProject["idProject"].toInt(), jsonProject["name"].toString(), jsonProject["description"].toString(), jsonProject["isFinished"].toBool(),jsonProject["startDate"].toVariant().toDate(), jsonProject["finishDate"].toVariant().toDate(), company};
                 UserStruct user = {jsonUser["idUser"].toInt(), jsonUser["username"].toString(), jsonUser["password"].toString(), jsonUser["isAdmin"].toBool()};
 
-                mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
+                if (obj["date"].toVariant().toDate() == fetchedDate) {
+                    mList->appendItem({obj["idHourRegistration"].toInt(),user,project, obj["hours"].toInt(),obj["date"].toVariant().toDate(),obj["description"].toString()});
+                }
             }
         }
     } else {
