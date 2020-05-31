@@ -9,5 +9,6 @@
         <file>UrenRegistreren.qml</file>
         <file>MaterialenRegistreren.qml</file>
         <file>ExportProject.qml</file>
+        <file>GebruikerRegistreren.qml</file>
     </qresource>
 </RCC>

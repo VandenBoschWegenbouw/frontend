@@ -45,6 +45,8 @@ SOURCES += \
         Projects/projecthandler.cpp \
         Projects/projectlist.cpp \
         Projects/projectmodel.cpp \
+        Register/registercomponent.cpp \
+        Register/registerhandler.cpp \
         UsedParts/usedpartscomponent.cpp \
         UsedParts/usedpartshandler.cpp \
         UsedParts/usedpartslist.cpp \
@@ -102,6 +104,8 @@ HEADERS += \
     Projects/projecthandler.h \
     Projects/projectlist.h \
     Projects/projectmodel.h \
+    Register/registercomponent.h \
+    Register/registerhandler.h \
     Structs/AmountTypeStruct.h \
     Structs/CompanyStruct.h \
     Structs/HourRegistrationStruct.h \

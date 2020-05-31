@@ -9,6 +9,7 @@
 //#include "Company/companylist.h"
 
 #include <Login/loginhandler.h>
+#include <Register/registerhandler.h>
 
 #include <HourRegistration/hourregistrationmodel.h>
 #include <HourRegistration/hourregistrationlist.h>
@@ -83,6 +84,7 @@ int main(int argc, char *argv[])
     PartTypeHandler ptHandler;
     AmountTypeHandler atHandler;
     DateHandler dHandler;
+    RegisterHandler rHandler;
 
     engine.rootContext()->setContextProperty("applicationPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("loginHandler", &lHandler);
@@ -93,6 +95,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("partTypeHandler", &ptHandler);
     engine.rootContext()->setContextProperty("amountTypeHandler", &atHandler);
     engine.rootContext()->setContextProperty("dateHandler", &dHandler);
+    engine.rootContext()->setContextProperty("registerHandler", &rHandler);
 
     engine.rootContext()->setContextProperty("companyList", &companyList);
     engine.rootContext()->setContextProperty("projectList", &projectList);
@@ -100,6 +103,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("usedPartsList", &usedPartsList);
     engine.rootContext()->setContextProperty("partTypeList", &partTypeList);
     engine.rootContext()->setContextProperty("amountTypeList", &amountTypeList);
+
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

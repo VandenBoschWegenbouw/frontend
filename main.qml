@@ -95,6 +95,16 @@ ApplicationWindow {
                     drawer.close()
                 }
             }
+            ItemDelegate {
+                id: registerUser
+                visible: false
+                text: "Registreer gebruiker"
+                width: parent.width
+                onClicked: {
+                    stackView.replace("GebruikerRegistreren.qml")
+                    drawer.close()
+                }
+            }
         }
     }
 
@@ -116,6 +126,7 @@ ApplicationWindow {
             svItems.replace("MijnUren.qml")
             toolBar.visible = true;
             exportHours.visible = true;
+            registerUser.visible = true;
         }
 
         onIncorrectLogin: {
