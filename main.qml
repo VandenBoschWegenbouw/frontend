@@ -105,6 +105,26 @@ ApplicationWindow {
                     drawer.close()
                 }
             }
+            ItemDelegate {
+                id: registerProject
+                visible: false
+                text: "Registreer project"
+                width: parent.width
+                onClicked: {
+                    stackView.replace("ProjectRegistreren.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                id: registerKlant
+                visible: false
+                text: "Registreer nieuwe klant"
+                width: parent.width
+                onClicked: {
+                    stackView.replace("KlantRegistreren.qml")
+                    drawer.close()
+                }
+            }
         }
     }
 
@@ -127,6 +147,8 @@ ApplicationWindow {
             toolBar.visible = true;
             exportHours.visible = true;
             registerUser.visible = true;
+            registerProject.visible = true;
+            registerKlant.visible = true;
         }
 
         onIncorrectLogin: {

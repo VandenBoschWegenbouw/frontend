@@ -15,7 +15,7 @@ bool ProjectList::setItemAt(int index, const ProjectStruct &item)
 
     const ProjectStruct &oldItem = mItems.at(index);
     if (item.id == oldItem.id && item.name == oldItem.name && item.finished == oldItem.finished && item.start_date == oldItem.start_date
-            && item.finish_Date == oldItem.finish_Date && item.description == oldItem.description)
+            && item.finish_date == oldItem.finish_date && item.description == oldItem.description)
         return false;
 
     mItems[index] = item;

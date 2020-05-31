@@ -39,7 +39,7 @@ Page {
 
             RowLayout {
                 width: parent.width
-                //visible: !model.finished
+                visible: !model.finished
                 Text {
                     id: project
                     text: qsTr(model.name + " - " + model.company)
@@ -49,7 +49,7 @@ Page {
                     Layout.fillWidth: true
                 }
                 Button {
-                    text: "Exporteer " + model.name
+                    text: "Exporteer project"
 
                     onClicked: {
                         projectHandler.exportProject(model.id)

@@ -51,9 +51,5 @@ void RegisterHandler::registerUser()
 {
     UserStruct user = {mUsername, mPassword, mAdmin};
 
-    qDebug() << user.username;
-    qDebug() << user.password;
-    qDebug() << user.admin;
-
     mComponent.registerUser(user);
 }

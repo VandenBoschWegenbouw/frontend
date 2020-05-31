@@ -36,6 +36,8 @@ void ProjectComponent::fetchProjects(ProjectList *list)
     manager.get(request);
 }
 
+
+
 void ProjectComponent::_finished(QNetworkReply *reply)
 {
 

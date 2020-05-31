@@ -51,8 +51,8 @@ void HourRegistrationComponent::addHours(HourRegistrationStruct hr, HourRegistra
     project["description"] = hr.project.description;
     project["isFinished"] = hr.project.finished;
     project["startDate"] = hr.project.start_date.toString("yyyy-MM-dd") + "T00:00:00";
-    if (!hr.project.finish_Date.isNull()) {
-        project["finishDate"] = hr.project.finish_Date.toString("yyyy-MM-ddT00:00:00");
+    if (!hr.project.finish_date.isNull()) {
+        project["finishDate"] = hr.project.finish_date.toString("yyyy-MM-ddT00:00:00");
     }
     project["name"] = hr.project.name;
     project["company"] = company;

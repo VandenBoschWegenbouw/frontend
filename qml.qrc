@@ -10,5 +10,7 @@
         <file>MaterialenRegistreren.qml</file>
         <file>ExportProject.qml</file>
         <file>GebruikerRegistreren.qml</file>
+        <file>ProjectRegistreren.qml</file>
+        <file>KlantRegistreren.qml</file>
     </qresource>
 </RCC>

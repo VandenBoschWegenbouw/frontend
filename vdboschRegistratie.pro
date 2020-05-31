@@ -24,6 +24,7 @@ SOURCES += \
         AmountType/amounttypehandler.cpp \
         AmountType/amounttypelist.cpp \
         AmountType/amounttypemodel.cpp \
+        Company/Create/createcompanycomponent.cpp \
         Company/companycomponent.cpp \
         Company/companyhandler.cpp \
         Company/companylist.cpp \
@@ -40,6 +41,7 @@ SOURCES += \
         PartType/parttypehandler.cpp \
         PartType/parttypelist.cpp \
         PartType/parttypemodel.cpp \
+        Projects/Create/createcomponent.cpp \
         Projects/Export/exportcomponent.cpp \
         Projects/projectcomponent.cpp \
         Projects/projecthandler.cpp \
@@ -83,6 +85,7 @@ HEADERS += \
     AmountType/amounttypehandler.h \
     AmountType/amounttypelist.h \
     AmountType/amounttypemodel.h \
+    Company/Create/createcompanycomponent.h \
     Company/companycomponent.h \
     Company/companyhandler.h \
     Company/companylist.h \
@@ -99,6 +102,7 @@ HEADERS += \
     PartType/parttypehandler.h \
     PartType/parttypelist.h \
     PartType/parttypemodel.h \
+    Projects/Create/createcomponent.h \
     Projects/Export/exportcomponent.h \
     Projects/projectcomponent.h \
     Projects/projecthandler.h \

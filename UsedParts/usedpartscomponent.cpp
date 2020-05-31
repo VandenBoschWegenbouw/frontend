@@ -48,8 +48,8 @@ void UsedPartsComponent::addUsedParts(UsedPartsStruct up, UsedPartsList *upList)
     project["description"] = up.project.description;
     project["isFinished"] = up.project.finished;
     project["startDate"] = up.project.start_date.toString("yyyy-MM-dd") + "T00:00:00";
-    if (!up.project.finish_Date.isNull()) {
-        project["finishDate"] = up.project.finish_Date.toString("yyyy-MM-ddT00:00:00");
+    if (!up.project.finish_date.isNull()) {
+        project["finishDate"] = up.project.finish_date.toString("yyyy-MM-ddT00:00:00");
     }
     project["name"] = up.project.name;
     project["company"] = company;
@@ -94,7 +94,7 @@ void UsedPartsComponent::_finished(QNetworkReply *reply)
             mList->clearList();
         }
 
-        if (jsonArr.size() == 0) {
+        if (jsonArr.size() == 0 && !doc.object().isEmpty()) {
             QJsonObject obj = doc.object();
             QJsonObject jsonPartType = obj["partType"].toObject();
             QJsonObject jsonAmountType = obj["amountType"].toObject();
