@@ -40,6 +40,12 @@ void UsedPartsHandler::fetchUsedParts(UsedPartsList *upList)
     mComponent.fetchUsedParts(upList);
 }
 
+void UsedPartsHandler::fetchUsedParts(UsedPartsList *upList, QString date)
+{
+    QDate qDate = QDate::fromString(date, "dd-MM-yyyy");
+    mComponent.fetchUsedParts(upList, qDate);
+}
+
 void UsedPartsHandler::addUsedParts(PartTypeList *ptList, int ptIndex, AmountTypeList *atList, int atIndex, ProjectList *pList, int pIndex, UsedPartsList *upList)
 {
     PartTypeStruct partType = ptList->items().at(ptIndex);

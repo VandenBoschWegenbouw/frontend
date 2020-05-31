@@ -144,12 +144,96 @@ Page {
                     width: parent.width
                     height: parent.height
                 }
+
+                delegate: ItemDelegate {
+                    width: cbSelectProject.width
+                    text: model.finished ? model.name + " - AFGEROND" : model.name
+                    font.weight: cbSelectProject.currentIndex === index ? Font.DemiBold : Font.Normal
+                    enabled: !model.finished
+                    highlighted: ListView.isCurrentItem
+
+                    Binding {
+                        target: contentItem
+                        property: "color"
+                        value: model.finished ? "gray" : "black"
+                    }
+                }
+            }
+
+            Rectangle {
+                Layout.column: 1
+                Layout.columnSpan: 3
+                Layout.row: 7
+                width: cbSelectKlant.width
+                height: cbSelectKlant.height
+
+                color: "#C0BEBD"
+
+                Label {
+                    id: lblDate
+                    text: dateHandler.date.toString("dd-MM-yyyy H:m:ss AP")
+                    color: "white"
+                    font.pixelSize: 16
+                    x: parent.width/2-lblDate.width/2
+                    y: parent.height/2-lblDate.height/2
+                }
+
+                Button {
+                    id: previousDate
+                    text: "<"
+                    font.pixelSize: 16
+                    width: parent.height
+                    height: parent.height
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: parent.opacity
+                        color: "white"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+                    background: Rectangle {
+                        anchors.fill: parent
+                        color: "#C0BEBD"
+                    }
+
+                    onClicked: {
+                        dateHandler.decreaseDate()
+                    }
+                }
+
+                Button {
+                    id: nextDate
+                    text: ">"
+                    font.pixelSize: 16
+                    width: parent.height
+                    height: parent.height
+                    x: parent.width-nextDate.width
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: parent.opacity
+                        color: "white"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+                    background: Rectangle {
+                        anchors.fill: parent
+                        color: "#C0BEBD"
+                    }
+                    onClicked: {
+                        dateHandler.increaseDate()
+                    }
+                }
+
             }
 
             Label {
                 Layout.column: 2
                 Layout.columnSpan: 3
-                Layout.row: 7
+                Layout.row: 8
                 id: lblMaterialen
                 text: qsTr("Materialen Groep")
                 font.pointSize: 16
@@ -158,7 +242,7 @@ Page {
             ComboBox {
                 Layout.column: 2
                 Layout.columnSpan: 3
-                Layout.row: 8
+                Layout.row: 9
                 id: cbSelectMaterialen
                 implicitWidth: parent.width*0.6
                 implicitHeight: parent.height*0.05
@@ -184,7 +268,7 @@ Page {
             TextField {
                 Layout.column: 2
                 Layout.columnSpan: 1
-                Layout.row: 9
+                Layout.row: 10
                 id: cbSelectMaterialenItem
                 implicitWidth: parent.width*0.6
                 implicitHeight: parent.height*0.05
@@ -204,7 +288,7 @@ Page {
             SpinBox {
                 Layout.column: 2
                 Layout.columnSpan: 1
-                Layout.row: 10
+                Layout.row: 11
                 id: cbSelectMaterialenAantal
                 implicitWidth: (parent.width*0.3)
                 implicitHeight: parent.height*0.05
@@ -223,8 +307,8 @@ Page {
             }
 
             ComboBox {
-                Layout.column: 2
-                Layout.row: 10
+                Layout.column: 1
+                Layout.row: 11
                 Layout.columnSpan: 5
                 id: cbSelectMaterialType
                 implicitWidth: (parent.width*0.2)

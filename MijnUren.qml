@@ -176,7 +176,7 @@ Page {
         }
 
         Component.onCompleted: {
-            hourRegistrationHandler.fetchHours(hourRegistrationList)
+            hourRegistrationHandler.fetchHours(hourRegistrationList, dateHandler.date)
         }
     }
 

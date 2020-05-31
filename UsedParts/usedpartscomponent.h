@@ -13,6 +13,7 @@ public:
     explicit UsedPartsComponent(QObject *parent = nullptr);
 
     void fetchUsedParts(UsedPartsList *list);
+    void fetchUsedParts(UsedPartsList *list, QDate date);
 
     void addUsedParts(UsedPartsStruct upStruct, UsedPartsList *upList);
 

@@ -24,6 +24,20 @@ void UsedPartsComponent::fetchUsedParts(UsedPartsList *list)
     manager.get(request);
 }
 
+void UsedPartsComponent::fetchUsedParts(UsedPartsList *list, QDate date)
+{
+    mList = list;
+
+    const QString url = "http://localhost:9000/partsused/"+date.toString("yyyy-MM-dd");
+
+    qDebug() << url;
+
+    QNetworkRequest request(url);
+    request.setRawHeader("Content-Type", "application/json");
+
+    manager.get(request);
+}
+
 void UsedPartsComponent::addUsedParts(UsedPartsStruct up, UsedPartsList *upList)
 {
     mList = upList;
@@ -90,9 +104,7 @@ void UsedPartsComponent::_finished(QNetworkReply *reply)
 
         qDebug() << jsonArr;
 
-        if (jsonArr.size() > 0) {
-            mList->clearList();
-        }
+        mList->clearList();
 
         if (jsonArr.size() == 0 && !doc.object().isEmpty()) {
             QJsonObject obj = doc.object();

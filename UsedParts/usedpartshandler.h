@@ -29,6 +29,7 @@ public:
 
 public slots:
     void fetchUsedParts(UsedPartsList *upList);
+    void fetchUsedParts(UsedPartsList *upList, QString date);
 
     void addUsedParts(PartTypeList *ptList, int ptIndex, AmountTypeList *atList, int atIndex, ProjectList *pList, int pIndex, UsedPartsList *upList);
 

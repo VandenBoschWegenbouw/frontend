@@ -21,7 +21,7 @@ Page {
 
         Label {
             id: date
-            text: Qt.formatDate(new Date(), "dd-MM-yyyy")
+            text: dateHandler.date
             color: "white"
             font.pixelSize: 22
             x: parent.width/2-date.width/2
@@ -47,6 +47,11 @@ Page {
                 anchors.fill: parent
                 color: "#C0BEBD"
             }
+
+            onClicked: {
+                dateHandler.decreaseDate()
+                usedPartsHandler.fetchUsedParts(usedPartsList, dateHandler.date)
+            }
         }
 
         Button {
@@ -69,9 +74,14 @@ Page {
                 anchors.fill: parent
                 color: "#C0BEBD"
             }
+
+
+            onClicked: {
+                dateHandler.increaseDate()
+                usedPartsHandler.fetchUsedParts(usedPartsList,dateHandler.date)
+            }
         }
     }
-
     ListView {
         width: parent.width
         height: parent.height*0.9
@@ -83,7 +93,7 @@ Page {
         }
 
         Component.onCompleted: {
-            usedPartsHandler.fetchUsedParts(usedPartsList)
+            usedPartsHandler.fetchUsedParts(usedPartsList, dateHandler.date )
         }
 
         delegate: ColumnLayout {
