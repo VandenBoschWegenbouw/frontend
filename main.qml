@@ -10,6 +10,7 @@ ApplicationWindow {
     visible: true
     width: 411
     height: 811
+    font.family: "helvetica"
     property alias stackView: svItems
     property alias window: window
     property alias toolBar: toolBar
@@ -28,7 +29,15 @@ ApplicationWindow {
 
         ToolButton {
             id: toolButton
-            text: stackView.depth > 1 ? "\u25C0" : "\u2630"
+            //text: stackView.depth > 1 ? "\u25C0" : "\u2630"
+            Image {
+                width: parent.width*0.3
+                height: parent.height*0.3
+                source: stackView.depth > 1 ? "images/left-arrow.png" : "images/bars.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
             height: parent.height
             width: parent.height
             font.pixelSize: Qt.application.font.pixelSize * 1.6

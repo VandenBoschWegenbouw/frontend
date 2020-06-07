@@ -76,7 +76,9 @@ DISTFILES += \
     android/gradlew \
     android/gradlew.bat \
     android/res/values/libs.xml \
-    images/Logo.png
+    images/Logo.png \
+    images/bars.png \
+    images/left-arrow.png
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 

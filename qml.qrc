@@ -12,5 +12,7 @@
         <file>GebruikerRegistreren.qml</file>
         <file>ProjectRegistreren.qml</file>
         <file>KlantRegistreren.qml</file>
+        <file>images/bars.png</file>
+        <file>images/left-arrow.png</file>
     </qresource>
 </RCC>
