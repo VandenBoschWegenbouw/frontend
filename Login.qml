@@ -11,8 +11,6 @@ Page {
 
     Rectangle {
         id: background
-        x: 63
-        y: 86
         width: parent.width
         height: parent.height
         color: "#393d41"
@@ -20,6 +18,11 @@ Page {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.left: parent.left
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: Qt.inputMethod.hide()
+        }
 
 
         Image {
@@ -42,6 +45,7 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             onTextChanged: loginHandler.username = text
+            onAccepted: loginHandler.login();
         }
 
         TextField {
@@ -56,6 +60,7 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
             onTextChanged: loginHandler.password = text
             echoMode: "Password"
+            onAccepted: loginHandler.login();
         }
 
         Rectangle {
