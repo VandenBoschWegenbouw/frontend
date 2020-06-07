@@ -16,7 +16,7 @@ void ProjectComponent::fetchProjectsByCompany(ProjectList *list, int idCompany)
 {
     mList = list;
 
-    const QString url = "http://localhost:9000/company/" + QString::number(idCompany) + "/projects";
+    const QString url = "http://51.75.133.79:9000/company/" + QString::number(idCompany) + "/projects";
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");
@@ -28,7 +28,7 @@ void ProjectComponent::fetchProjects(ProjectList *list)
 {
     mList = list;
 
-    const QString url = "http://localhost:9000/projects/";
+    const QString url = "http://51.75.133.79:9000/projects/";
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");

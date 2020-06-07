@@ -19,8 +19,6 @@ Page {
         height: parent.height*0.9
         clip: true
 
-
-
         Component.onCompleted: {
             projectHandler.fetchProjects(projectList)
         }
@@ -32,10 +30,7 @@ Page {
         delegate: ColumnLayout {
             width: parent.width
 
-
             property int delegateIndex: index
-
-
 
             RowLayout {
                 width: parent.width

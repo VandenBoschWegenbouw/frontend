@@ -333,13 +333,6 @@ Page {
                 }
             }
 
-//            Button {
-//                Layout.column: 1
-//                Layout.row: 10
-//                id: btnAddHours
-//                text: qsTr("Voeg uren toe")
-//            }
-
             Rectangle {
                 id: btnAddMateriaal
                 y: parent.height*0.7

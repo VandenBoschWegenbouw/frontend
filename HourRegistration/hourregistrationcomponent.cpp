@@ -21,7 +21,7 @@ void HourRegistrationComponent::fetchHours(HourRegistrationList *list, QDate dat
     fetchedDate = date;
 
     UserStruct user = LoginComponent::user;
-    QString url = "http://localhost:9000/hourregistration/" + date.toString("yyyy-MM-dd") + "/user/" + QString::number(user.id);
+    QString url = "http://51.75.133.79:9000/hourregistration/" + date.toString("yyyy-MM-dd") + "/user/" + QString::number(user.id);
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");
@@ -52,7 +52,7 @@ void HourRegistrationComponent::addHours(HourRegistrationStruct hr, HourRegistra
     project["isFinished"] = hr.project.finished;
     project["startDate"] = hr.project.start_date.toString("yyyy-MM-dd") + "T00:00:00";
     if (!hr.project.finish_date.isNull()) {
-        project["finishDate"] = hr.project.finish_date.toString("yyyy-MM-ddT00:00:00");
+        project["finishDate"] = hr.project.finish_date.toString("yyyy-MM-dd") + "T00:00:00";
     }
     project["name"] = hr.project.name;
     project["company"] = company;
@@ -66,7 +66,7 @@ void HourRegistrationComponent::addHours(HourRegistrationStruct hr, HourRegistra
 
     QJsonDocument doc(obj);
 
-    QNetworkRequest request(QUrl("http://localhost:9000/hourregistration/"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/hourregistration/"));
     request.setRawHeader("Content-Type", "application/json");
 
     manager.post(request, doc.toJson());
@@ -81,9 +81,7 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
 
         QJsonArray jsonArr = doc.array();
 
-        if (jsonArr.size() > 0) {
-            mList->clearList();
-        }
+        mList->clearList();
 
         if (jsonArr.size() == 0 && !doc.object().isEmpty()) {
             QJsonObject obj = doc.object();
@@ -118,5 +116,3 @@ void HourRegistrationComponent::_finished(QNetworkReply *reply)
         emit workedTooHard();
     }
 }
-
-

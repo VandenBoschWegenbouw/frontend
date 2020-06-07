@@ -7,7 +7,7 @@ struct UserStruct {
     int id;
     QString username;
     QString password;
-    bool admin;
+    bool admin = false;
 
     UserStruct(int id, QString username, QString password, bool admin) {
         this->id = id;

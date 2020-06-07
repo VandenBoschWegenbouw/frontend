@@ -15,7 +15,7 @@ void PartTypeComponent::fetchPartTypes(PartTypeList *ptList)
 {
     mList = ptList;
 
-    QString url = "http://localhost:9000/parttypes/";
+    QString url = "http://51.75.133.79:9000/parttypes/";
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");

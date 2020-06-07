@@ -16,7 +16,7 @@ void CreateCompanyComponent::createCompany(CompanyStruct company)
 
     QJsonDocument doc(obj);
 
-    QNetworkRequest request(QUrl("http://localhost:9000/company/"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/company/"));
     request.setRawHeader("Content-Type", "application/json");
 
 

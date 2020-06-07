@@ -16,7 +16,7 @@ void UsedPartsComponent::fetchUsedParts(UsedPartsList *list)
 {
     mList = list;
 
-    const QString url = "http://localhost:9000/partsused/"+QDate::currentDate().toString("yyyy-MM-dd");
+    const QString url = "http://51.75.133.79:9000/partsused/"+QDate::currentDate().toString("yyyy-MM-dd");
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");
@@ -28,7 +28,7 @@ void UsedPartsComponent::fetchUsedParts(UsedPartsList *list, QDate date)
 {
     mList = list;
 
-    const QString url = "http://localhost:9000/partsused/"+date.toString("yyyy-MM-dd");
+    const QString url = "http://51.75.133.79:9000/partsused/"+date.toString("yyyy-MM-dd");
 
     qDebug() << url;
 
@@ -84,7 +84,7 @@ void UsedPartsComponent::addUsedParts(UsedPartsStruct up, UsedPartsList *upList)
 
     QJsonDocument doc(obj);
 
-    QNetworkRequest request(QUrl("http://localhost:9000/partsused/"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/partsused/"));
     request.setRawHeader("Content-Type", "application/json");
 
     manager.post(request, doc.toJson());

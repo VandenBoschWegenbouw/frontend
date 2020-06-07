@@ -19,7 +19,7 @@ void RegisterComponent::registerUser(UserStruct user)
 
     QJsonDocument doc(obj);
 
-    QNetworkRequest request(QUrl("http://localhost:9000/users/register"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/users/register"));
     request.setRawHeader("Content-Type", "application/json");
 
 

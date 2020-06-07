@@ -25,7 +25,7 @@ void CreateComponent::createProject(ProjectStruct project)
 
     QJsonDocument doc(obj);
 
-    QNetworkRequest request(QUrl("http://localhost:9000/projects/"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/projects/"));
     request.setRawHeader("Content-Type", "application/json");
 
     manager.post(request, doc.toJson());

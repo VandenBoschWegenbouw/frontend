@@ -28,7 +28,7 @@ void LoginComponent::login(LoginStruct user)
     QJsonDocument doc(obj);
 
 
-    QNetworkRequest request(QUrl("http://localhost:9000/users/login"));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/users/login"));
     request.setRawHeader("Content-Type", "application/json");
 
     manager.post(request,doc.toJson());

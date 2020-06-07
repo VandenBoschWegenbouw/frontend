@@ -14,7 +14,7 @@ void DeleteComponent::deleteHours(HourRegistrationStruct hr, HourRegistrationLis
 
     mIndex = index;
 
-    QNetworkRequest request(QUrl("http://localhost:9000/hourregistration/" + QString::number(hr.id)));
+    QNetworkRequest request(QUrl("http://51.75.133.79:9000/hourregistration/" + QString::number(hr.id)));
     request.setRawHeader("Content-Type", "application/json");
 
     manager.deleteResource(request);

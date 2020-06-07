@@ -28,7 +28,7 @@ ExportComponent::ExportComponent(QObject *parent) : QObject(parent)
 
 void ExportComponent::exportProjects(int id)
 {
-    const QString url = "http://localhost:9000/projects/" + QString::number(id) + "/hourregistration";
+    const QString url = "http://51.75.133.79:9000/projects/" + QString::number(id) + "/hourregistration";
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");

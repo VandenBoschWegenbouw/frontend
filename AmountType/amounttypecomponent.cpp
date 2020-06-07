@@ -15,7 +15,7 @@ void AmountTypeComponent::fetchAmountTypes(AmountTypeList *atList)
 {
     mList = atList;
 
-    QString url = "http://localhost:9000/amounttypes/";
+    QString url = "http://51.75.133.79:9000/amounttypes/";
 
     QNetworkRequest request(url);
     request.setRawHeader("Content-Type", "application/json");
