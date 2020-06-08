@@ -55,8 +55,6 @@ void HourRegistrationHandler::addHours(ProjectList *pList, int selectedPIndex, H
 
     QDate qDate = QDate::fromString(date, "dd-MM-yyyy");
 
-    qDebug() << qDate << date;
-
     hr.user = user;
     hr.project = project;
     hr.hours = mWorkedHours;

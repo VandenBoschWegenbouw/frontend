@@ -14,5 +14,6 @@
         <file>KlantRegistreren.qml</file>
         <file>images/bars.png</file>
         <file>images/left-arrow.png</file>
+        <file>images/button.png</file>
     </qresource>
 </RCC>

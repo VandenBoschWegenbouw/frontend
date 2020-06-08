@@ -67,6 +67,7 @@ Page {
             width: parent.height
             height: parent.height
             x: parent.width-nextDate.width
+            visible: !(Qt.formatDateTime(new Date(), "dd-MM-yyyy") == dateHandler.date)
             contentItem: Text {
                 text: parent.text
                 font: parent.font
@@ -92,9 +93,8 @@ Page {
     ListView {
         width: parent.width
         height: parent.height*0.9
-        y: dateBar.y + dateBar.height
+        y: dateBar.y + dateBar.height + 10
         clip: true
-
         model: HourRegistrationModel {
             list: hourRegistrationList
         }
@@ -105,6 +105,7 @@ Page {
             RowLayout {
                 width: parent.width*0.8
                 x: parent.width*0.1
+
                 Text {
                     id: projectAndCustomer
                     text: model.project + " - " + model.company
@@ -126,7 +127,7 @@ Page {
 
                 Text {
                     id: time
-                    text: model.uren + " UUR"
+                    text: model.uren + " uur"
                     font.pixelSize: 22
                     horizontalAlignment: Text.AlignRight
                 }
@@ -134,6 +135,20 @@ Page {
                 Button {
                     id: delRegistration
                     text: "X"
+
+                    contentItem: Text {
+                        text: parent.text
+                        font.pixelSize: 16
+                        opacity: enabled ? 1.0 : 0.3
+                        color: "red"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+
+                    background: Rectangle {
+                        color: "transparent"
+                    }
 
                     visible: !model.projectFinished
 
@@ -144,8 +159,6 @@ Page {
                         selectedRow = index;
                         confirmDeletion.open()
                     }
-
-                    //delRegistration.rightPadding: parent.width*0.1
                 }
 
                 Item {
@@ -180,33 +193,23 @@ Page {
         }
     }
 
-    RoundButton {
+    Image {
         id: addHours
-        text: "+"
-        width: parent.height * 0.1
-        height: parent.height * 0.1
-        background: Rectangle {
-            radius: addHours.radius
-            color: "#6abc93"
-        }
+        source: "images/button.png"
+        width: parent.height*0.1
+        height: parent.height*0.1
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20 + addHours.height
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+        //        x: parent.width*0.8-addHours.width/2
+        //        y: window.height*0.8-addHours.height/2
 
-        x: parent.width*0.8-addHours.width/2
-        y: parent.height*0.8-addHours.height/2
-
-        contentItem: Text {
-            text: addHours.text
-            font.pointSize: 40
-            color: "white"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            elide: Text.ElideRight
-        }
-
-        onClicked: {
-            stackView.push("UrenRegistreren.qml")
+        MouseArea {
+            anchors.fill: parent
+            onClicked: stackView.push("UrenRegistreren.qml")
         }
     }
-
 
     MessageDialog {
         id: confirmDeletion

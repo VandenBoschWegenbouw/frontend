@@ -97,9 +97,6 @@ void ExportComponent::_finished(QNetworkReply *reply)
 
         QString path = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" +  hrs.first().project.name + ".xlsx";
 
-        qDebug() << path;
-
-
         excelFile.saveAs(path);
 
     }

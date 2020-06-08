@@ -39,8 +39,6 @@ void ProjectHandler::fetchProjectsByCompany(CompanyList *companyList, ProjectLis
 {
     CompanyStruct company;
 
-    qDebug() << indexSelectedCompany;
-
     if (indexSelectedCompany >= 0 && companyList->items().size() > indexSelectedCompany) {
         company = companyList->items().at(indexSelectedCompany);
     }

@@ -10,7 +10,7 @@ ApplicationWindow {
     visible: true
     width: 411
     height: 811
-    font.family: "helvetica"
+    font.family: "arial"
     property alias stackView: svItems
     property alias window: window
     property alias toolBar: toolBar
@@ -29,7 +29,6 @@ ApplicationWindow {
 
         ToolButton {
             id: toolButton
-            //text: stackView.depth > 1 ? "\u25C0" : "\u2630"
             Image {
                 width: parent.width*0.3
                 height: parent.height*0.3
@@ -66,6 +65,7 @@ ApplicationWindow {
         Label {
             text: stackView.currentItem.title
             anchors.centerIn: parent
+            font.pixelSize: 20
             color: "white"
         }
     }
@@ -147,13 +147,13 @@ ApplicationWindow {
     Connections {
         target: loginHandler
         onCorrectLogin: {
-            svItems.replace("MijnUren.qml")
             toolBar.visible = true;
+            svItems.replace("MijnUren.qml")
         }
 
         onCorrectAdminLogin: {
-            svItems.replace("MijnUren.qml")
             toolBar.visible = true;
+            svItems.replace("MijnUren.qml")
             exportHours.visible = true;
             registerUser.visible = true;
             registerProject.visible = true;

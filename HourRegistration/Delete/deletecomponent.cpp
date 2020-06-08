@@ -24,12 +24,9 @@ void DeleteComponent::_finished(QNetworkReply *reply)
 {
     QByteArray arr = reply->readAll();
 
-    qDebug() << arr;
-
     if (arr.size() > 0) {
         bool result = QVariant(QTextCodec::codecForMib(106)->toUnicode(arr)).toBool();
         if (result) {
-            qDebug() << "test";
             mList->removeAtIndex(mIndex);
         }
     }

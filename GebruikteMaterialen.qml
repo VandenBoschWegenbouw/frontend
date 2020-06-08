@@ -61,6 +61,7 @@ Page {
             width: parent.height
             height: parent.height
             x: parent.width-nextDate.width
+            visible: !(Qt.formatDateTime(new Date(), "dd-MM-yyyy") == dateHandler.date)
             contentItem: Text {
                 text: parent.text
                 font: parent.font
@@ -85,7 +86,7 @@ Page {
     ListView {
         width: parent.width
         height: parent.height*0.9
-        y: dateBar.y + dateBar.height
+        y: dateBar.y + dateBar.height + 10
         clip: true
 
         model: UsedPartsModel {
@@ -133,32 +134,16 @@ Page {
         }
     }
 
-    RoundButton {
+    Image {
         id: addHours
-        text: "+"
-        width: parent.height * 0.1
-        height: parent.height * 0.1
-        background: Rectangle {
-            radius: addHours.radius
-            color: "#6abc93"
-        }
-
+        source: "images/button.png"
+        width: parent.height*0.1
+        height: parent.height*0.1
         x: parent.width*0.8-addHours.width/2
-        y: parent.height*0.8-addHours.height/2
-
-
-        contentItem: Text {
-            text: addHours.text
-            //font: addHours.font
-            font.pointSize: 40
-            color: "white"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            elide: Text.ElideRight
-        }
-
-        onClicked: {
-            stackView.push("MaterialenRegistreren.qml")
+        y: window.height*0.8-addHours.height/2
+        MouseArea {
+            anchors.fill: parent
+            onClicked: stackView.push("MaterialenRegistreren.qml")
         }
     }
 

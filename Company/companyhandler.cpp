@@ -28,7 +28,5 @@ void CompanyHandler::fetchCompanies(CompanyList *lst)
 
 void CompanyHandler::createCompany()
 {
-
-    qDebug() << mName;
     mCreateComponent.createCompany({mName});
 }

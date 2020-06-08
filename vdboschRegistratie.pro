@@ -78,6 +78,7 @@ DISTFILES += \
     android/res/values/libs.xml \
     images/Logo.png \
     images/bars.png \
+    images/button.png \
     images/left-arrow.png
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
