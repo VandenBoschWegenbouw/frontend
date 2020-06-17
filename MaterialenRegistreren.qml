@@ -306,6 +306,8 @@ Page {
             Layout.column: 1
             Layout.columnSpan: 2
             Layout.row: 11
+            Layout.topMargin: 10
+
             id: btnAddMateriaal
             y: parent.height*0.7
             width: parent.width*0.3

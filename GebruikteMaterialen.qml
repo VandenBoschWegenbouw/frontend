@@ -139,8 +139,10 @@ Page {
         source: "images/button.png"
         width: parent.height*0.1
         height: parent.height*0.1
-        x: parent.width*0.8-addHours.width/2
-        y: window.height*0.8-addHours.height/2
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20 + addHours.height
+        anchors.right: parent.right
+        anchors.rightMargin: 20
         MouseArea {
             anchors.fill: parent
             onClicked: stackView.push("MaterialenRegistreren.qml")

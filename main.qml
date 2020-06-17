@@ -14,7 +14,7 @@ ApplicationWindow {
     property alias stackView: svItems
     property alias window: window
     property alias toolBar: toolBar
-    title: qsTr("vdbosch Registratie")
+    title: qsTr("van den Bosch Registratie")
 
     header: ToolBar {
         id: toolBar
@@ -74,13 +74,41 @@ ApplicationWindow {
         id: drawer
         width: window.width * 0.66
         height: window.height
+        font.pixelSize: 16
+
+        background: Rectangle {
+            anchors.fill: parent
+            color: "#343a40"
+        }
+
+
 
         Column {
             anchors.fill: parent
+            padding: 10
 
             ItemDelegate {
                 text: qsTr("Mijn uren")
-                width: parent.width
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+
+                background: Rectangle {
+                    id: bgUren
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgUren.color = "#C0BEBD"
+
+                onReleased: bgUren.color = "#343a40"
+
+
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("MijnUren.qml")
                     drawer.close()
@@ -88,7 +116,25 @@ ApplicationWindow {
             }
             ItemDelegate {
                 text: qsTr("Materialen")
-                width: parent.width
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+
+                background: Rectangle {
+                    id: bgMaterialen
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgMaterialen.color = "#C0BEBD"
+
+                onReleased: bgMaterialen.color = "#343a40"
+
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("GebruikteMaterialen.qml")
                     drawer.close()
@@ -96,9 +142,26 @@ ApplicationWindow {
             }
             ItemDelegate {
                 id: exportHours
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+                background: Rectangle {
+                    id: bgExport
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgExport.color = "#C0BEBD"
+
+                onReleased: bgExport.color = "#343a40"
                 visible: false
                 text: "Exporteer uren"
-                width: parent.width
+
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("ExportProject.qml")
                     drawer.close()
@@ -106,9 +169,25 @@ ApplicationWindow {
             }
             ItemDelegate {
                 id: registerUser
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+                background: Rectangle {
+                    id: bgUser
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgUser.color = "#C0BEBD"
+
+                onReleased: bgUser.color = "#343a40"
                 visible: false
                 text: "Registreer gebruiker"
-                width: parent.width
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("GebruikerRegistreren.qml")
                     drawer.close()
@@ -116,9 +195,25 @@ ApplicationWindow {
             }
             ItemDelegate {
                 id: registerProject
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+                background: Rectangle {
+                    id: bgProject
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgProject.color = "#C0BEBD"
+
+                onReleased: bgProject.color = "#343a40"
                 visible: false
                 text: "Registreer project"
-                width: parent.width
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("ProjectRegistreren.qml")
                     drawer.close()
@@ -126,9 +221,25 @@ ApplicationWindow {
             }
             ItemDelegate {
                 id: registerKlant
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+                background: Rectangle {
+                    id: bgCustomer
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgCustomer.color = "#C0BEBD"
+
+                onReleased: bgCustomer.color = "#343a40"
                 visible: false
                 text: "Registreer nieuwe klant"
-                width: parent.width
+                width: parent.width - 20
                 onClicked: {
                     stackView.replace("KlantRegistreren.qml")
                     drawer.close()

@@ -27,9 +27,9 @@ Page {
 
         Image {
             id: logo
-            y: parent.height*0.2
-            width: (parent.width*0.4)
-            height: (parent.width*0.4)/100*115
+            y: parent.height*0.15
+            width: (parent.width*0.5)
+            height: (parent.width*0.5)/100*115
             anchors.horizontalCenter: parent.horizontalCenter
             source: "images/Logo.png"
         }
@@ -76,7 +76,7 @@ Page {
             Label {
                 color: "#ffffff"
                 text: qsTr("INLOGGEN")
-                font.pointSize: 18
+                font.pointSize: 16
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter

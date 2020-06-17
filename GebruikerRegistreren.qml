@@ -89,7 +89,6 @@ Page {
 
             Label {
                 Layout.column: 1
-                Layout.columnSpan: 3
                 Layout.row: 7
                 id: lblAdmin
                 text: qsTr("Admin")
@@ -97,9 +96,9 @@ Page {
             }
 
             CheckBox {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 8
+                Layout.column: 2
+                Layout.columnSpan: 2
+                Layout.row: 7
                 id: admin
                 onCheckedChanged: registerHandler.admin = checked
             }

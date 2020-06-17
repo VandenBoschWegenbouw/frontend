@@ -40,6 +40,7 @@ signals:
     void workedHoursChanged(const int& workedHours);
     void descriptionChanged(const QString& description);
     void workedTooHard();
+    void missingInfo();
 
 private:
     int mWorkedHours;

@@ -48,6 +48,12 @@ void HourRegistrationHandler::fetchHours(HourRegistrationList *list, QString dat
 
 void HourRegistrationHandler::addHours(ProjectList *pList, int selectedPIndex, HourRegistrationList *hList, QString date)
 {
+    qDebug() << selectedPIndex;
+    if(selectedPIndex == -1)  {
+        emit missingInfo();
+        return;
+    }
+    qDebug() << selectedPIndex;
     ProjectStruct project = pList->items().at(selectedPIndex);
     UserStruct user = LoginComponent::user;
 
