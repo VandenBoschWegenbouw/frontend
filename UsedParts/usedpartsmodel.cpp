@@ -37,6 +37,8 @@ QVariant UsedPartsModel::data(const QModelIndex &index, int role) const
             return QVariant(item.amountType.type);
         case ProjectRole:
             return QVariant(item.project.name);
+        case ProjectFinishedRole:
+            return QVariant(item.project.finished);
         case UserRole:
             return QVariant(item.user.username);
         case CompanyRole:
@@ -74,6 +76,9 @@ bool UsedPartsModel::setData(const QModelIndex &index, const QVariant &value, in
         case ProjectRole:
             item.project.name = value.toString();
         break;
+        case ProjectFinishedRole:
+            item.project.finished = value.toBool();
+        break;
         case UserRole:
             item.user.username = value.toString();
         break;
@@ -107,6 +112,7 @@ QHash<int, QByteArray> UsedPartsModel::roleNames() const
     names[PartTypeRole] = "partType";
     names[AmountTypeRole] = "amountType";
     names[ProjectRole] = "project";
+    names[ProjectFinishedRole] = "projectFinished";
     names[UserRole] = "user";
     names[CompanyRole] = "company";
 

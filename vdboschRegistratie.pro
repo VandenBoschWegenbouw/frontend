@@ -49,6 +49,7 @@ SOURCES += \
         Projects/projectmodel.cpp \
         Register/registercomponent.cpp \
         Register/registerhandler.cpp \
+        UsedParts/Delete/deletepartscomponent.cpp \
         UsedParts/usedpartscomponent.cpp \
         UsedParts/usedpartshandler.cpp \
         UsedParts/usedpartslist.cpp \
@@ -121,6 +122,7 @@ HEADERS += \
     Structs/ProjectStruct.h \
     Structs/UsedPartsStruct.h \
     Structs/UserStruct.h \
+    UsedParts/Delete/deletepartscomponent.h \
     UsedParts/usedpartscomponent.h \
     UsedParts/usedpartshandler.h \
     UsedParts/usedpartslist.h \

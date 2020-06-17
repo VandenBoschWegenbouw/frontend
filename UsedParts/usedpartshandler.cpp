@@ -65,3 +65,12 @@ void UsedPartsHandler::addUsedParts(PartTypeList *ptList, int ptIndex, AmountTyp
 
     mComponent.addUsedParts(up, upList);
 }
+
+void UsedPartsHandler::deleteParts(int index, UsedPartsList *upList)
+{
+    UsedPartsStruct usedParts = upList->items().at(index);
+
+    mDeleteComponent.deleteParts(usedParts, upList, index);
+}
+
+

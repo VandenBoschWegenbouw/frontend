@@ -2,6 +2,8 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.2
 
 import vdBosch 1.0
 
@@ -12,6 +14,8 @@ Page {
     implicitWidth: 640
     implicitHeight: 480
     title: qsTr("Materialen")
+
+    property int selectedRow
 
     Rectangle {
         id: dateBar
@@ -129,6 +133,35 @@ Page {
                     font.pixelSize: 22
                     rightPadding: parent.width*0.1
                 }
+
+                Button {
+                    id: delRegistration
+                    text: "X"
+
+                    contentItem: Text {
+                        text: parent.text
+                        font.pixelSize: 16
+                        opacity: enabled ? 1.0 : 0.3
+                        color: "red"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                    }
+
+                    background: Rectangle {
+                        color: "transparent"
+                    }
+
+                    visible: !model.projectFinished
+
+                    implicitWidth: 30
+                    x: parent.right - delRegistration.width
+
+                    onClicked: {
+                        selectedRow = index;
+                        confirmDeletion.open()
+                    }
+                }
             }
 
         }
@@ -146,6 +179,20 @@ Page {
         MouseArea {
             anchors.fill: parent
             onClicked: stackView.push("MaterialenRegistreren.qml")
+        }
+    }
+
+
+
+    MessageDialog {
+        id: confirmDeletion
+        title: "Zeker verwijderen?"
+        text: "Ben je er zeker van dat je dit wilt verwijderen? Dit kan niet meer ongedaan gemaakt worden"
+
+        standardButtons: StandardButton.Yes | StandardButton.No
+
+        onYes: {
+            usedPartsHandler.deleteParts(selectedRow, usedPartsList)
         }
     }
 

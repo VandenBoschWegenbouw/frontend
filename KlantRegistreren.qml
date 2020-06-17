@@ -35,13 +35,6 @@ Page {
             Item {
                 Layout.column: 1
                 Layout.columnSpan: 3
-                Layout.row: 1
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
                 Layout.row: 2
                 Layout.fillHeight: true
             }

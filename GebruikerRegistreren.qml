@@ -19,7 +19,7 @@ Page {
 
     GridLayout {
         anchors.fill: parent
-        columns: 5
+        columns: 4
         Item {
             Layout.column: 0
             Layout.row: 0
@@ -28,29 +28,16 @@ Page {
         }
             Item {
                 Layout.column: 1
-                Layout.columnSpan: 3
+                Layout.columnSpan: 2
                 Layout.row: 0
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 1
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 2
+                Layout.rowSpan: 2
                 Layout.fillHeight: true
             }
 
             Label {
                 Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 3
+                Layout.columnSpan: 2
+                Layout.row: 2
                 id: lblUsername
                 text: qsTr("Gebruikersnaam")
                 font.pointSize: 16
@@ -59,8 +46,8 @@ Page {
             TextField {
                 id: username
                 Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 4
+                Layout.columnSpan: 2
+                Layout.row: 3
                 width: parent.width*0.5
                 implicitWidth: parent.width*0.5
                 height: 40
@@ -78,8 +65,8 @@ Page {
 
             Label {
                 Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 5
+                Layout.columnSpan: 2
+                Layout.row: 4
                 id: lblPassword
                 text: qsTr("Wachtwoord")
                 font.pointSize: 16
@@ -88,8 +75,8 @@ Page {
             TextField {
                 id: password
                 Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 6
+                Layout.columnSpan: 2
+                Layout.row: 5
                 width: parent.width*0.5
                 implicitWidth: parent.width*0.5
                 height: 40
@@ -108,7 +95,7 @@ Page {
 
             Label {
                 Layout.column: 1
-                Layout.row: 7
+                Layout.row: 6
                 id: lblAdmin
                 text: qsTr("Admin")
                 font.pointSize: 16
@@ -116,8 +103,7 @@ Page {
 
             CheckBox {
                 Layout.column: 2
-                Layout.columnSpan: 2
-                Layout.row: 7
+                Layout.row: 6
                 id: admin
                 onCheckedChanged: registerHandler.admin = checked
 
@@ -128,8 +114,8 @@ Page {
                 y: parent.height*0.7
                 width: parent.width*0.3
                 Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 9
+                Layout.columnSpan: 2
+                Layout.row: 7
                 height: 40
                 color: "#6abc93"
                 radius: 10
@@ -158,27 +144,31 @@ Page {
 
             Item {
                 Layout.column: 1
-                Layout.columnSpan: 3
+                Layout.columnSpan: 2
+                Layout.row: 8
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            Item {
+                Layout.column: 1
+                Layout.columnSpan: 2
+                Layout.row: 9
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            Item {
+                Layout.column: 1
+                Layout.columnSpan: 2
                 Layout.row: 10
                 Layout.fillHeight: true
+                Layout.fillWidth: true
             }
 
-            Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 11
-                Layout.fillHeight: true
-            }
 
             Item {
-                Layout.column: 1
-                Layout.columnSpan: 3
-                Layout.row: 12
-                Layout.fillHeight: true
-            }
-
-            Item {
-                Layout.column: 4
+                Layout.column: 3
                 Layout.row: 0
                 Layout.fillHeight: true
                 Layout.fillWidth: true

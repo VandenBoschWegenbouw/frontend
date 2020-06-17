@@ -43,3 +43,14 @@ void UsedPartsList::clearList()
         emit postItemRemoved();
     }
 }
+
+void UsedPartsList::removeAtIndex(int index)
+{
+    if (index >= 0 && index < mItems.size()) {
+        emit preItemRemoved(index);
+
+        mItems.removeAt(index);
+
+        emit postItemRemoved();
+    }
+}

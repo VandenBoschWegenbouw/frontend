@@ -3,8 +3,6 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
-import Qt.labs.calendar 1.0
-
 import vdBosch 1.0
 
 Page {
@@ -14,7 +12,6 @@ Page {
     implicitWidth: 640
     implicitHeight: 480
     title: qsTr("Mijn Uren")
-
 
     property int selectedRow
 

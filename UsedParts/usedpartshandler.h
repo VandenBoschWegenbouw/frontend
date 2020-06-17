@@ -9,6 +9,7 @@
 #include <PartType/parttypelist.h>
 #include <AmountType/amounttypelist.h>
 #include <Projects/projectlist.h>
+#include <UsedParts/Delete/deletepartscomponent.h>
 
 
 class UsedPartsHandler : public QObject
@@ -33,6 +34,8 @@ public slots:
 
     void addUsedParts(PartTypeList *ptList, int ptIndex, AmountTypeList *atList, int atIndex, ProjectList *pList, int pIndex, UsedPartsList *upList);
 
+    void deleteParts(int index, UsedPartsList *upList);
+
 signals:
     void partAmountChanged(const int& partAmount);
     void specificationChanged(const QString& specification);
@@ -42,6 +45,8 @@ private:
     QString mSpecification;
 
     UsedPartsComponent mComponent;
+
+    DeletePartsComponent mDeleteComponent;
 
 };
 
