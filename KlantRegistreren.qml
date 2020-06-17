@@ -61,9 +61,18 @@ Page {
                 Layout.columnSpan: 3
                 Layout.row: 4
                 width: parent.width*0.5
+                implicitWidth: parent.width*0.5
                 height: 40
+                implicitHeight: 40
                 placeholderText: "Klant naam"
                 onTextChanged: companyHandler.name = text
+                background: Rectangle {
+                    color: "white"
+                    border.color: "#6abc93"
+                    border.width: 3
+                    width: parent.width
+                    height: parent.height
+                }
             }
 
             Rectangle {
@@ -82,7 +91,7 @@ Page {
                 Label {
                     color: "#ffffff"
                     text: qsTr("Toevoegen")
-                    font.pointSize: 12
+                    font.pointSize: 16
 
                     anchors.horizontalCenter: parent.horizontalCenter
                     verticalAlignment: Text.AlignVCenter

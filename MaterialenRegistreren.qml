@@ -320,7 +320,7 @@ Page {
             Label {
                 color: "#ffffff"
                 text: qsTr("Toevoegen")
-                font.pointSize: 12
+                font.pointSize: 16
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter

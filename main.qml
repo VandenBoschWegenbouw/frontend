@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Window 2.3
 import QtQuick.Controls.Material 2.0
+import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     id: window
@@ -89,6 +90,8 @@ ApplicationWindow {
 
             ItemDelegate {
                 text: qsTr("Mijn uren")
+                width: drawer.width-20
+
 
                 contentItem: Text {
                     text: parent.text
@@ -106,9 +109,6 @@ ApplicationWindow {
                 onPressed: bgUren.color = "#C0BEBD"
 
                 onReleased: bgUren.color = "#343a40"
-
-
-                width: parent.width - 20
                 onClicked: {
                     stackView.replace("MijnUren.qml")
                     drawer.close()
@@ -242,6 +242,51 @@ ApplicationWindow {
                 width: parent.width - 20
                 onClicked: {
                     stackView.replace("KlantRegistreren.qml")
+                    drawer.close()
+                }
+            }
+
+            ItemDelegate {
+                height: (parent.height-y) - (idLogout.height+10)
+                implicitHeight: (parent.height-y) - (idLogout.height+10)
+
+
+                background: Rectangle {
+                    id: bgFiller
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgFiller.color = "#343a40"
+            }
+
+
+            ItemDelegate {
+                id: idLogout
+                text: qsTr("Log uit")
+
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    opacity: parent.opacity
+                    color: "white"
+                }
+
+                background: Rectangle {
+                    id: bgLogout
+                    anchors.fill: parent
+                    color: "#343a40"
+                }
+
+                onPressed: bgLogout.color = "#C0BEBD"
+
+                onReleased: bgLogout.color = "#343a40"
+
+
+                width: parent.width - 20
+                onClicked: {
+                    stackView.replace("Login.qml")
+                    toolBar.visible = false
                     drawer.close()
                 }
             }
